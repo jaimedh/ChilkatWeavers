@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { Link } from "react-router-dom";
 
-class SignUp extends Component {
+class EditProfile extends Component {
     state= {
         name:"",
         community:"",
@@ -14,34 +14,77 @@ class SignUp extends Component {
         blanket:"",
         supply:""
     }
+    // componentDidMount() {
+    //     this.getProfilebyId();
+    // }
 
+//     getProfilebyId = () => {
+//         axios
+//         .get(
+//         )
+    
+//     .then((response) => {
+//         console.log(response.data);
+//         this.setState({
+//             name: this.state.name,
+//             community: this.state.community,
+//             nation: this.state.nation,
+//             location: this.state.location,
+//             crest: this.state.crest,
+//             age: this.state.age,
+//             teacher: this.state.teacher,
+//             experience: this.state.experience,
+//             blanket: this.state.blanket,
+//             supply: this.state.supply
+//         });
+        
+//     })
+//         .catch((error) => console.log(error));
+// };
     handleChange = (event) => {
         const eventRequired = event.target.name 
         this.setState({
             [event.target.name]: event.target.value,
-            // [eventRequired]: false
+            
         })
     }
     handleSubmit =(event) => {
         event.preventDefault();
-        const newSignup = {
-            name: this.state.name,
-            community: this.state.community,
-            nation: this.state.nation,
-            location: this.state.location,
-            crest: this.state.crest,
-            age: this.state.age,
-            teacher: this.state.teacher,
-            experience: this.state.experience,
-            blanket: this.state.blanket,
-            supply: this.state.supply
-        }
-    }
+
+       const editProfile = {
+        name: this.state.name,
+        community: this.state.community,
+        nation: this.state.nation,
+        location: this.state.location,
+        crest: this.state.crest,
+        age: this.state.age,
+        teacher: this.state.teacher,
+        experience: this.state.experience,
+        blanket: this.state.blanket,
+        supply: this.state.supply
+       }
+          
+    };
+    // editProfile() {
+    // axios
+    //  .put(
+    //      , editSignUp
+    //  )
+    //  .then((response) => {
+    //      this.setState({
+    //          profile: response.data,
+    //      });
+    //  })
+    //  .catch((error) => {
+    //     console.log(error);
+    //   });
+    // }
+
 
   render() {
     return (
       <article className="signup">
-        <h1 className="signup__title">New Weavers Sign-Up</h1>
+        <h1 className="signup__title">Edit Profile</h1>
         <form onSubmit={this,this.handleSubmit} className="signup__form">
           <h2 className="signup__subtitle">Details</h2>
           <lable className="signup__label">
@@ -178,4 +221,4 @@ class SignUp extends Component {
     );
   }
 }
-export default SignUp;
+export default EditProfile;

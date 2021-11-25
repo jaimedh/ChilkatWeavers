@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.scss";
 import Header from "./components/Header/Header";
 import SignUp from "./components/SignUp/SignUp";
+import EditProfile from "./components/EditProfile/EditProfile";
 
 function App() {
   return (
@@ -13,9 +14,17 @@ function App() {
             path="/"
             exact
             render={(routerProps) => (
-              <SignUp {...routerProps} />
+              <SignUp {...routerProps} />       
   )}
           />
+           <Route
+            path="/edit"
+            exact
+            render={(routerProps) => (
+              <EditProfile {...routerProps} />       
+  )}
+          />
+
         </switch>
       </div>
     </Router>
