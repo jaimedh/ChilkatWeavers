@@ -1,0 +1,15 @@
+.header {
+    &__container {
+         display: flex;
+        justify-content: space-around;
+    }
+    &__wrapper {
+        display: flex;
+        // width: 40%;
+       
+    }
+    &__logo {
+        width: 4.5rem;
+        height: 4.5rem;
+    }
+}
