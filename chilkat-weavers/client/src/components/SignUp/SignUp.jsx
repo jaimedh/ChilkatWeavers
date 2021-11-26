@@ -1,49 +1,87 @@
+import "./SignUp.scss";
 import { Component } from "react";
 import { Link } from "react-router-dom";
 
 class SignUp extends Component {
-    state= {
-        name:"",
-        community:"",
-        nation:"",
-        location:"",
-        crest:"",
-        age:"",
-        teacher:"",
-        experience:"",
-        blanket:"",
-        supply:""
-    }
+  state = {
+    imgSrc: "",
+    file: null,
+    name: "",
+    community: "",
+    nation: "",
+    location: "",
+    crest: "",
+    age: "",
+    teacher: "",
+    experience: "",
+    blanket: "",
+    supply: "",
+  };
 
-    handleChange = (event) => {
-        const eventRequired = event.target.name 
-        this.setState({
-            [event.target.name]: event.target.value,
-            // [eventRequired]: false
-        })
+  handleSubmit = (event) => {
+    event.preventDefault();
+    const formData = new FormData();
+    formData.append("profileImage", this.state.file);
+    const reader = new FileReader();
+    const url = reader.readAsDataURL(this.state.file);
+    reader.onloadend = (event) => {
+      this.setState({
+        imgSrc: [reader.result],
+      });
+    };
+
+    formData.append("name", this.state.name);
+    for (let value of formData.values()) {
+      console.log(value);
     }
-    handleSubmit =(event) => {
-        event.preventDefault();
-        const newSignup = {
-            name: this.state.name,
-            community: this.state.community,
-            nation: this.state.nation,
-            location: this.state.location,
-            crest: this.state.crest,
-            age: this.state.age,
-            teacher: this.state.teacher,
-            experience: this.state.experience,
-            blanket: this.state.blanket,
-            supply: this.state.supply
-        }
-    }
+    // const config = {
+    //     headers: {
+    //         'content-type': 'multipart/form-data'
+    //     },
+    //   }
+    const newSignup = {
+      name: this.state.name,
+      community: this.state.community,
+      nation: this.state.nation,
+      location: this.state.location,
+      crest: this.state.crest,
+      age: this.state.age,
+      teacher: this.state.teacher,
+      experience: this.state.experience,
+      blanket: this.state.blanket,
+      supply: this.state.supply,
+    };
+    console.log(newSignup, formData);
+  };
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+  };
+  handleImageChange = (event) => {
+    console.log("image", event.target.files[0]);
+    this.setState({
+      file: event.target.files[0],
+    });
+  };
 
   render() {
     return (
       <article className="signup">
         <h1 className="signup__title">New Weavers Sign-Up</h1>
-        <form onSubmit={this,this.handleSubmit} className="signup__form">
+
+        <form onSubmit={(this.handleSubmit)} className="signup__form">
           <h2 className="signup__subtitle">Details</h2>
+          <label className="signup__label">
+            <h3>Upload Profile Picture</h3>
+            <img src={this.state.imgSrc} alt="uploaded file" />
+            <input
+              type="file"
+              name="profileImage"
+              onChange={this.handleImageChange}
+            />
+          </label>
+
           <lable className="signup__label">
             <h3>Name</h3>
             <input
@@ -66,7 +104,7 @@ class SignUp extends Component {
               placeholder="Community"
             />
           </lable>
-          
+
           <lable className="signup__label">
             <h3>Nation</h3>
             <input
@@ -109,7 +147,7 @@ class SignUp extends Component {
               onChange={this.handleChange}
               value={this.state.age}
               placeholder="age range"
-            /> 
+            />
           </lable>
           <lable className="signup__label">
             <h3>Teachers or Mentors</h3>
@@ -130,25 +168,32 @@ class SignUp extends Component {
               value={this.state.experience}
               type="text"
               name="experience"
-              defaultValue="">
-                    <option value="" disabled>Please Select</option>
-                  <option value="Beginner">Beginner</option>
-                  <option value="Novice">Novice</option>
-                  <option value="Intermediate">Intermediate</option>
-                  <option value="Expert">Expert</option>
-                  <option value="Master">Master</option>
-                  </select>
-                
-            </lable>    
-            <label className="signup__label">
-                <h3> I have woven a full sized 56" or wider Chilkat dancing blanket"</h3>
-                <input  className="signup__input" 
-                type="radio"
-                name="blanket"
-                onChange={this.handleChange}
-                />Yes
-                </label>  
-          
+              defaultValue=""
+            >
+              <option value="" disabled>
+                Please Select
+              </option>
+              <option value="Beginner">Beginner</option>
+              <option value="Novice">Novice</option>
+              <option value="Intermediate">Intermediate</option>
+              <option value="Expert">Expert</option>
+              <option value="Master">Master</option>
+            </select>
+          </lable>
+          <label className="signup__label">
+            <h3>
+              {" "}
+              I have woven a full sized 56" or wider Chilkat dancing blanket"
+            </h3>
+            <input
+              className="signup__input"
+              type="radio"
+              name="blanket"
+              onChange={this.handleChange}
+            />
+            Yes
+          </label>
+
           <lable className="signup__label">
             <h3>Supply Sources</h3>
             <textarea
@@ -160,19 +205,13 @@ class SignUp extends Component {
             />
           </lable>
           <div className="signup__btnwrapper">
-              <Link to="/" className="signup__link">
-                <button className="signup__btn">Cancel</button>
-              </Link>
-              <button
-                className="signup__btn signup__btn--add"
-                type="submit"
-              >
-                Sign-Up
-              </button>
-            </div>
-          
-          
-
+            <Link to="/" className="signup__link">
+              <button className="signup__btn">Cancel</button>
+            </Link>
+            <button className="signup__btn signup__btn--add" type="submit">
+              Sign-Up
+            </button>
+          </div>
         </form>
       </article>
     );

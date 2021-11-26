@@ -1,7 +1,13 @@
+@use "../../styles/partials/variables" as *;
 .header {
     &__container {
-         display: flex;
-        justify-content: space-around;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        // align-items: center;
+        background-color: $nav-color;
+        color: $text-color;
+        height: 12rem;
     }
     &__wrapper {
         display: flex;
@@ -9,7 +15,26 @@
        
     }
     &__logo {
-        width: 4.5rem;
-        height: 4.5rem;
+       margin: 1rem;
+        width: 4rem;
+        height: 4rem;
+        border-radius: 15px;
     }
+    &__link {
+        font-weight: 500;
+        text-decoration: none;
+        color: $text-color;
+        padding: 1.75rem 1rem 1rem;
+    }
+
+    &__btn {
+        background-color: $text-color;
+        color: $nav-color;
+        border: none;
+        border-radius: 25px;
+        padding: 0.5rem;
+        width: 6.25rem;
+        margin: 1rem 0.5rem;
+    }
+
 }

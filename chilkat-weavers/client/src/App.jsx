@@ -3,15 +3,22 @@ import "./App.scss";
 import Header from "./components/Header/Header";
 import SignUp from "./components/SignUp/SignUp";
 import EditProfile from "./components/EditProfile/EditProfile";
-
+import Map from "./components/Map/Map";
 function App() {
   return (
     <Router>
       <div className="App">
         <Header/>
         <switch>
+          <Route 
+          path="/"
+          exact
+          render={(routerProps) => (
+            <Map {...routerProps} />       
+)}
+/>
           <Route
-            path="/"
+            path="/signup"
             exact
             render={(routerProps) => (
               <SignUp {...routerProps} />       
