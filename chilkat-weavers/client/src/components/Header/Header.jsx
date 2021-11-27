@@ -6,10 +6,14 @@ function Header() {
     return (
         <header className="header">
             <nav className="header__container">
+                <div className="header__logo-wrapper">
+                       <p className="header__name">Chilkat Weaving</p> 
                 <Link to="/"> <img className="header__logo"src={Logo} alt="Chilkat Logo"/></Link>
+            
+                </div>
                 <div className="header__wrapper">
-                <Link to="/"className="header__link"><p className="header__info">Info</p></Link>
-                <Link to="/" className="header__Link"><button className="header__btn">Weavers Sign-up</button></Link>
+                
+                <Link to="/" className="header__Link"><button className="header__btn">Weavers Sign-Up</button></Link>
             </div></nav>
         </header>
     )

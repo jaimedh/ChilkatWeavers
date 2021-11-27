@@ -1,23 +1,51 @@
 @use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
 .header {
     &__container {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
-        // align-items: center;
+        
+        align-items: center;
         background-color: $nav-color;
         color: $text-color;
-        height: 12rem;
+        height: 10.5rem;
+        @include tablet {
+            flex-direction: row-reverse;
+            justify-content: space-between;
+            align-items: flex-start;
+            height: 9.5rem;
+        }
+
+    }
+    &__logo-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 0.75rem 0;
+        @include tablet {
+            justify-content: flex-end;
+            padding: 2rem 1.5rem;
+            // align-items: flex-start;
+        }
+    }
+
+    &__name {
+        padding: 1.5rem 1rem;
+        font-size: 20px;
+        @include tablet {
+            font-size: 32px;
+        }
     }
     &__wrapper {
         display: flex;
-        // width: 40%;
+       justify-content: flex-end;
        
     }
     &__logo {
-       margin: 1rem;
-        width: 4rem;
-        height: 4rem;
+    //    margin: 1rem 0 0 1rem;
+        width: 3rem;
+        height: 3rem;
         border-radius: 15px;
     }
     &__link {
@@ -31,10 +59,15 @@
         background-color: $text-color;
         color: $nav-color;
         border: none;
-        border-radius: 25px;
-        padding: 0.5rem;
-        width: 6.25rem;
-        margin: 1rem 0.5rem;
+        border-radius: 15px;
+        padding: 1rem;
+        width: 14rem;
+        
+        font-weight: 600;
+        @include tablet {
+            padding: 1.5rem;
+            margin: 2.5rem 1.5rem;
+        }
     }
 
 }
