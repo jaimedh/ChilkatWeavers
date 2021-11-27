@@ -9,6 +9,7 @@ class Map extends Component {
     componentDidMount() {
         console.log("mounted")
         this.getMap();
+        this.getLocation();
     }
     getMap = () => {
         axios
@@ -22,6 +23,20 @@ class Map extends Component {
             })
             
         }).catch((error) => console.log (error));
+    }
+    getLocation = () => {
+        navigator.geolocation.getCurrentPosition((success) => {
+            console.log(success); 
+            const {lat, long} = success.coords
+            axios
+            .get(
+                `https://native-land.ca/api/index.php?maps=languages&position=${lat},${long}` 
+            )
+            .then((response) => {
+                console.log(response);
+            })
+        })
+       
     }
 
 
