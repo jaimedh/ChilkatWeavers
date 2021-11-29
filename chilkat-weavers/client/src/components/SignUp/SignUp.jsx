@@ -5,8 +5,8 @@ import axios from "axios";
 
 class SignUp extends Component{
   state = {
-    // imgSrc: "",
-    // file: null,
+    imgSrc: "",
+    file: null,
     name: "",
     community: "",
     nation: "",
@@ -46,7 +46,7 @@ class SignUp extends Component{
     event.preventDefault();
     const formData = new FormData();
     formData.append("profileImage", this.state.file);
-    const reader = new FileReader();
+    // const reader = new FileReader();
     // const url = reader.readAsDataURL(this.state.file);
     // reader.onloadend = (event) => {
     //   this.setState({
@@ -54,15 +54,15 @@ class SignUp extends Component{
     //   });
     // };
 
-    // formData.append("name", this.state.name);
-    // for (let value of formData.values()) {
-    //   console.log(value);
-    // }
-    // const config = {
-    //     headers: {
-    //         'content-type': 'multipart/form-data'
-    //     },
-    //   }
+    formData.append("name", this.state.name);
+    for (let value of formData.values()) {
+      console.log(value);
+    }
+    const config = {
+        headers: {
+            'content-type': 'multipart/form-data'
+        },
+      }
     const newSignup = {
       name: this.state.name,
       community: this.state.community,
@@ -79,7 +79,7 @@ class SignUp extends Component{
 
   if (this.isFormValid()) {
     axios
-      .post(`http://localhost:8082/users/`, newSignup )
+      .post(`http://localhost:8082/users/`, formData, config, newSignup )
       .then((response) => {
         this.setState({
           users: response.data,
@@ -101,15 +101,15 @@ class SignUp extends Component{
 
         <form encType="multipart/form-data" method="post" onSubmit={(this.handleSubmit)} className="signup__form">
           <h2 className="signup__subtitle">Details</h2>
-          {/* <label className="signup__label">
+          <label className="signup__label">
             <h3>Upload Profile Picture</h3>
-            <img src={this.state.imgSrc} alt="uploaded file" />
+            {/* <img src={this.state.imgSrc} alt="uploaded file" /> */}
             <input
               type="file"
               name="profileImage"
               onChange={this.handleImageChange}
             />
-          </label> */}
+          </label>
 
           <lable className="signup__label">
             <h3>Name</h3>
@@ -211,7 +211,7 @@ class SignUp extends Component{
           </lable>
           <label className="signup__label">
             <h3>
-              {" "}
+              
               I have woven a full sized 56" or wider Chilkat dancing blanket"
             </h3>
             <input

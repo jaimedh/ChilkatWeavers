@@ -3,7 +3,7 @@ const { Knex } = require("knex");
 exports.up = function(knex) {
   return knex.schema
   .createTable('users', (table) => {
-      table.increments('id');
+      table.increments('id'); //users primary info
     //   table.blob('file');
       table.string('name').notNullable();
       table.string('community');
@@ -12,7 +12,7 @@ exports.up = function(knex) {
       table.timestamp('updated_at').defaultTo(knex.fn.now());
   })
   .createTable('usersinfo', (table) => {
-      table.increments('id');
+      table.increments('id'); //usersinfo primary key
       table.integer('users_id').unsigned().notNullable();
      table.string('location');
      table.string('age');

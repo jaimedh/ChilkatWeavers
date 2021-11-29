@@ -19,27 +19,27 @@ router.get('/', (request, respond) => {
 
 //get user by id
 
-router.get('/:id', (request, respond) => {
-    knex('users')
-    .where({ id: request.params.id })
-    .then((data) => {
-        if (!data.length) {
-            respond.status(404).json({
-                message: `User not found with the id ${request.params.id}`,
-            });
-        } else {
-            respond.status(200).json(data[0]);
-        }
-    })
-    .catch(() => {
-        respond.status(400).json({
-            message: `Error getting user ${request.params.id}`,
-        });
-    });
-});
+// router.get('/:id', (request, respond) => {
+//     knex('users')
+//     .where({ id: request.params.id })
+//     .then((data) => {
+//         if (!data.length) {
+//             respond.status(404).json({
+//                 message: `User not found with the id ${request.params.id}`,
+//             });
+//         } else {
+//             respond.status(200).json(data[0]);
+//         }
+//     })
+//     .catch(() => {
+//         respond.status(400).json({
+//             message: `Error getting user ${request.params.id}`,
+//         });
+//     });
+// });
 
 router.get('/:id/posts', (request, respond) => {
-    knex('posts')
+    knex('usersinfo')
       .where({ user_id: request.params.id })
       .then((data) => {
         if (!data.length) {
@@ -56,18 +56,44 @@ router.get('/:id/posts', (request, respond) => {
         });
       });
   });
+
+  //get posts by user with id, using inner join
+   router.get('/:id/', (req, res) => {
+
+      knex('users')
+        .join('usersinfo', 'usersinfo.users_id', 'users.id') // join users table
+        .where({ users_id: req.params.id })
+        .then((data) => {
+          if (!data.length) {
+            res.status(404).json({
+              message: `User not found with the id ${req.params.id}`,
+            });
+          } else {
+            res.status(200).json(data);
+          }
+        })
+        .catch(() => {
+          res.status(400).json({
+            message: `Error getting posts for user ${req.params.id}`,
+          });
+        });
+    });
+
   
-  //new user
-  router.post('/', upload.single('profileImage'),(request, respond) => {
+  //new user 
+  // to add photos  upload.single('profileImage'),
+  router.post('/', (request, respond) => {
       if (!request.body.name) {
         respond.status(400).json({ message: `Please provide a name for the user` });
         return;
       }
       knex('users')
+      .join('usersinfo', 'usersinfo.users_id', 'users.id')
         .insert(request.body)
         .then((data) => {
             respond.status(201).json({
-                message: `User ${request.body.name} created successfully with the id ${data}`,  
+                message: `User ${request.body.name} created successfully with the id ${data}`, 
+              //  message: `usersinfor ${request.body.name} created successfully with id $data`
             });
         })
         .catch(() => {

@@ -31,7 +31,7 @@ const usersInfo = [
   },
   {
     id: 4,
-    users_id: 1,
+    users_id: 2,
     location: "Coombs",
     age: "43",
     teacher: "May",

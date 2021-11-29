@@ -1,30 +1,26 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.scss";
 import Header from "./components/Header/Header";
+import HomePage from "./pages/HomePage/HomePage";
 import SignUp from "./components/SignUp/SignUp";
 import EditProfile from "./components/EditProfile/EditProfile";
-import Map from "./components/Map/Map";
-import Hero from "./components/Hero/Hero";
+
+import Profile from "./components/Profile/Profile";
 function App() {
   return (
     <Router>
       <div className="App">
         <Header/>
-        <switch>
-        <Route 
+        <Switch>
+ <Route 
           path="/"
           exact
+       
           render={(routerProps) => (
-            <Hero {...routerProps} />       
+            <HomePage {...routerProps} />       
 )}
-/>
-          <Route 
-          path="/"
-          exact
-          render={(routerProps) => (
-            <Map {...routerProps} />       
-)}
-/>
+/> 
+        
           <Route
             path="/signup"
             exact
@@ -33,14 +29,21 @@ function App() {
   )}
           />
            <Route
-            path="/edit"
+            path="/:id/edit"
             exact
             render={(routerProps) => (
               <EditProfile {...routerProps} />       
   )}
           />
+          <Route
+            path="/:id/profile"
+            exact
+            render={(routerProps) => (
+              <Profile {...routerProps} />       
+  )}
+          />
 
-        </switch>
+        </Switch>
       </div>
     </Router>
   );
