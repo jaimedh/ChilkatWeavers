@@ -9,6 +9,8 @@
         background-color: $nav-color;
         color: $text-color;
         height: 10.5rem;
+        border-bottom: 2px solid $yellow;
+        
         @include tablet {
             flex-direction: row-reverse;
             justify-content: space-between;

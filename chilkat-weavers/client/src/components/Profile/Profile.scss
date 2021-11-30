@@ -1,0 +1,21 @@
+@use "../../styles/partials/variables" as *;
+.profile {
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: $nav-color;
+    color: $text-color;
+   
+    padding-top: 1rem;
+
+    &__container {
+        display: flex;
+        justify-content: center;
+    }
+    &__img {
+        border-radius: 15px;
+        width: 80%;
+        height: 30%;
+    }
+}

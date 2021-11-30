@@ -27,7 +27,9 @@ const usersInfo = [
     teacher: "Willie",
     experience: "Beginner",
     blanket: "no",
-    supply: "store",    
+    supply: "store", 
+    fb:"facebook", 
+    instagram:"instagram"  
   },
   {
     id: 4,
@@ -38,6 +40,8 @@ const usersInfo = [
     experience: "Beginner",
     blanket: "no",
     supply: "shop", 
+    fb:"facebook", 
+    instagram:"instagram" 
   },
   
 

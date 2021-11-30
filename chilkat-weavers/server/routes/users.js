@@ -83,17 +83,58 @@ router.get('/:id/posts', (request, respond) => {
   //new user 
   // to add photos  upload.single('profileImage'),
   router.post('/', (request, respond) => {
+    console.log(request.body);
+      // if (!request.body.name) {
+      //   respond.status(400).json({ message: `Please provide a name for the user` });
+      //   return;
+      // }
+      const usersData = {
+        name: request.body.name,
+        community: request.body.community,
+        nation: request.body.nation,
+        crest: request.body.crest
+      }
+      const usersMoreData = {
+        location: request.body.location,
+        age: request.body.age,
+        teacher: request.body.teacher,
+        experience: request.body.experience,
+        blanket: request.body.blanket,
+        supply: request.body.supply,
+        fb: request.body.fb,
+        instagram: request.body.instagram
+      }
+      knex('users')
+        .insert(usersData)
+        .then((data) => {
+          console.log(data);
+          usersMoreData.users_id=data[0];
+          return knex('usersinfo')
+          .insert(usersMoreData)
+          }).then((data) => {
+            console.log(data[0]);
+            respond.status(201).json({
+                message: `User ${request.body.name} created successfully with the id ${data}`, 
+            
+            });
+        })
+        .catch(() => {
+            respond.status(400).json({
+              message: `Error creating user ${request.body.name}`,
+      });
+  });
+});
+
+ router.post('/', (request, respond) => {
       if (!request.body.name) {
         respond.status(400).json({ message: `Please provide a name for the user` });
         return;
       }
-      knex('users')
-      .join('usersinfo', 'usersinfo.users_id', 'users.id')
+      knex('usersinfo')
         .insert(request.body)
         .then((data) => {
             respond.status(201).json({
-                message: `User ${request.body.name} created successfully with the id ${data}`, 
-              //  message: `usersinfor ${request.body.name} created successfully with id $data`
+                message: `UsersInfo ${request.body.name} created successfully with the id ${data}`, 
             });
         })
         .catch(() => {

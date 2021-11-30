@@ -27,18 +27,18 @@ class EditProfile extends Component {
         )
     
     .then((response) => {
-        console.log(response.data);
+        console.log(response.data[0]);
         this.setState({
-            name: response.data.name,
-            community: response.data.community,
-            nation: response.data.nation,
-            location: response.data.location,
-            crest: response.data.crest,
-            age: response.data.age,
-            teacher: response.data.teacher,
-            experience: response.data.experience,
-            blanket: response.data.blanket,
-            supply: response.data.supply
+            name: response.data[0].name,
+            community: response.data[0].community,
+            nation: response.data[0].nation,
+            location: response.data[0].location,
+            crest: response.data[0].crest,
+            age: response.data[0].age,
+            teacher: response.data[0].teacher,
+            experience: response.data[0].experience,
+            blanket: response.data[0].blanket,
+            supply: response.data[0].supply
         });
         
     })
@@ -51,7 +51,7 @@ handleChange = (event) => {
       [event.target.name]: event.target.value,
       
   })
-}
+ }
 // handleImageChange = (event) => {
 // console.log("image", event.target.files[0]);
 //   this.setState({
@@ -203,8 +203,8 @@ handleChange = (event) => {
             
               type="text"
               name="experience"
-              defaultValue="">
-                    <option value="" disabled>{this.state.experience}</option>
+              defaultValue={this.state.experience}>
+                   
                   <option value="Beginner">Beginner</option>
                   <option value="Novice">Novice</option>
                   <option value="Intermediate">Intermediate</option>
@@ -212,15 +212,15 @@ handleChange = (event) => {
                   <option value="Master">Master</option>
                   </select> 
             </label>    
-            <label className="signup__label">
+            {/* <label className="signup__label">
                 <h3> I have woven a full sized 56" or wider Chilkat dancing blanket"</h3>
                 <input  className="signup__input" 
                 type="radio"
                 name="blanket"
                 onChange={this.handleChange}
-                // value={this.state.blanket}
+                value={this.state.blanket}
                 />Yes
-                </label>  
+                </label>   */}
           
           <label className="signup__label">
             <h3>Supply Sources</h3>
