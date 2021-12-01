@@ -48,7 +48,7 @@ class AddingPhotos extends Component {
 
     if (this.isFormValid()) {
       axios
-        .put(`http://localhost:8082/photos/`, formData)
+        .put(`http://localhost:8082/photos/${this.props.match.params.id}`, formData)
         .then((response) => {
           this.setState({
             users: response.data,

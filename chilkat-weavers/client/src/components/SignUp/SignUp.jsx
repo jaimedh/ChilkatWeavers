@@ -52,27 +52,27 @@ class SignUp extends Component{
 
   handleSubmit = (event) => {
     event.preventDefault();
-    // const formData = new FormData();
-    // formData.append("profile_img", this.state.file);
-    // const reader = new FileReader();
-    // const url = reader.readAsDataURL(this.state.file);
-    // reader.onloadend = (event) => {
-    //   this.setState({
-    //     imgSrc: [reader.result],
-    //   });
-    // };
+    const formData = new FormData();
+    formData.append("profile_img", this.state.file);
+    const reader = new FileReader();
+    const url = reader.readAsDataURL(this.state.file);
+    reader.onloadend = (event) => {
+      this.setState({
+        imgSrc: [reader.result],
+      });
+    };
 
   
-    // for (let value of formData.values()) {
-    //   console.log(value);
-    // }
-    // const config = {
-    //   headers: {
-    //     "content-type": "multipart/form-data",
-    //   },
-    // };
+    for (let value of formData.values()) {
+      console.log(value);
+    }
+    const config = {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    };
 
-    // console.log(formData);
+    console.log(formData);
 
   
     
@@ -94,13 +94,14 @@ class SignUp extends Component{
 
   if (this.isFormValid()) {
     axios
-      .post(`http://localhost:8082/users/`, newSignup )
+      .post(`http://localhost:8082/users/`, newSignup, formData )
       .then((response) => {
         this.setState({
           users: response.data,
           redirect:true
         });
         alert("successful upload");
+          //history api push
       })
 
       .catch((error) => {
@@ -112,16 +113,14 @@ class SignUp extends Component{
 };
 
   render(id) {
-    if (this.state.redirect) {
-      return <Redirect to={`/${id}/profile` }/>
-    }
+ 
      return (
       <article className="signup">
         <h1 className="signup__title">New Weavers Sign-Up</h1>
 
         <form encType="multipart/form-data" method="post" onSubmit={(this.handleSubmit)} className="signup__form">
           <h2 className="signup__subtitle">Details</h2>
-          {/* <label className="signup__label">
+          <label className="signup__label">
             <h3>Upload Profile Picture</h3>
             <img src={this.state.imgSrc} alt="uploaded file" />
             <input
@@ -129,7 +128,7 @@ class SignUp extends Component{
               name="profile_img"
               onChange={this.handleImageChange}
             />
-          </label> */}
+          </label>
 
           <label className="signup__label">
             <h3>Name</h3>
