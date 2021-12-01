@@ -1,7 +1,7 @@
 const usersData = [
   {
     id: 1,
-    // file: {},
+    file: "photo",
     name: "Jaime",
     community: "Lax",
     nation: "Tsimshian",   
@@ -9,7 +9,7 @@ const usersData = [
   },
   {
     id: 2,
-    // file: {},
+    file: "photo2",
     name: "Cara",
     community: "Lax KwAlaams",
     nation: "Tsimshian",   

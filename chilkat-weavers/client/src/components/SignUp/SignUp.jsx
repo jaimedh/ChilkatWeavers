@@ -1,6 +1,6 @@
 import "./SignUp.scss";
 import { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
 import FB from "../../assets/icons/facebook.svg";
 import instagram from "../../assets/icons/instagram.svg";
@@ -8,8 +8,8 @@ import Twitter from "../../assets/icons/twitter.svg";
 
 class SignUp extends Component{
   state = {
-    // imgSrc: "",
-    // file: null,
+    imgSrc: "",
+    file: {},
     name: "",
     community: "",
     nation: "",
@@ -22,10 +22,12 @@ class SignUp extends Component{
     supply: "",
     fb:"",
     instagram:"",
+    redirect:false
   };
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value,
+      
     });
   };
 
@@ -35,6 +37,7 @@ class SignUp extends Component{
       file: event.target.files[0],
     });
   };
+
   isFormValid = () => {
     // Check if the field is filled
     if (
@@ -49,8 +52,8 @@ class SignUp extends Component{
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const formData = new FormData();
-    formData.append("profileImage", this.state.file);
+    // const formData = new FormData();
+    // formData.append("profile_img", this.state.file);
     // const reader = new FileReader();
     // const url = reader.readAsDataURL(this.state.file);
     // reader.onloadend = (event) => {
@@ -59,15 +62,20 @@ class SignUp extends Component{
     //   });
     // };
 
-    // formData.append("name", this.state.name);
+  
     // for (let value of formData.values()) {
     //   console.log(value);
     // }
     // const config = {
-    //     headers: {
-    //         'content-type': 'multipart/form-data'
-    //     },
-    //   }
+    //   headers: {
+    //     "content-type": "multipart/form-data",
+    //   },
+    // };
+
+    // console.log(formData);
+
+  
+    
     const newSignup = {
       name: this.state.name,
       community: this.state.community,
@@ -82,7 +90,7 @@ class SignUp extends Component{
       fb: this.state.fb,
       instagram: this.state.instagram
     };
-    console.log(newSignup, formData); 
+    console.log(newSignup); 
 
   if (this.isFormValid()) {
     axios
@@ -90,19 +98,24 @@ class SignUp extends Component{
       .then((response) => {
         this.setState({
           users: response.data,
+          redirect:true
         });
+        alert("successful upload");
       })
 
       .catch((error) => {
         console.log(error);
       });
-    alert("successful upload");
+    
+   
   } else alert("Upload did not complete, please try again");
 };
 
-
-  render() {
-    return (
+  render(id) {
+    if (this.state.redirect) {
+      return <Redirect to={`/${id}/profile` }/>
+    }
+     return (
       <article className="signup">
         <h1 className="signup__title">New Weavers Sign-Up</h1>
 
@@ -110,13 +123,13 @@ class SignUp extends Component{
           <h2 className="signup__subtitle">Details</h2>
           {/* <label className="signup__label">
             <h3>Upload Profile Picture</h3>
-            {/* <img src={this.state.imgSrc} alt="uploaded file" /> */}
-            {/* <input
+            <img src={this.state.imgSrc} alt="uploaded file" />
+            <input
               type="file"
-              name="profileImage"
+              name="profile_img"
               onChange={this.handleImageChange}
             />
-          </label>  */}
+          </label> */}
 
           <label className="signup__label">
             <h3>Name</h3>

@@ -3,8 +3,7 @@ import { Component } from "react";
 import "./Profile.scss";
 import ProfilePic from "../../assets/images/michelle.jpeg";
 class Profile extends Component {
-    state= {
-        
+    state= {        
         // imgSrc:"",
         // file: null,
         name:"",
@@ -31,8 +30,7 @@ class Profile extends Component {
     .then(
         response => {
         console.log(response.data[0]);
-        
-        
+                
         this.setState({            
             name: response.data[0].name,
             community: response.data[0].community,

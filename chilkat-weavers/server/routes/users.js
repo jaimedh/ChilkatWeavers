@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const knex = require('knex')(require('../knexfile').development);
-const multer  = require('multer')
-const upload = multer({ dest: 'uploads/' })
+const multer = require('multer');
+const photo = multer({ dest: './../public/photos' })
 
 //get all users
-router.get('/', (request, respond) => {
+router.get('/', photo.single('profile_img'),(request, respond) => {
     knex('users')
     .then((usersData) => {
         respond.status(200).json(usersData);
@@ -80,15 +80,16 @@ router.get('/:id/posts', (request, respond) => {
     });
 
   
-  //new user 
-  // to add photos  upload.single('profileImage'),
+  //new user photo.single('profile_img'),
+
   router.post('/', (request, respond) => {
-    console.log(request.body);
+    console.log("photo",request.file, "text",request.body);
       // if (!request.body.name) {
       //   respond.status(400).json({ message: `Please provide a name for the user` });
       //   return;
       // }
       const usersData = {
+        // file: request.file,
         name: request.body.name,
         community: request.body.community,
         nation: request.body.nation,
@@ -142,7 +143,7 @@ router.get('/:id/posts', (request, respond) => {
               message: `Error creating user ${request.body.name}`,
       });
   });
-});
+ });
 
 //update user
 router.put('/:id', (request, respond) => {

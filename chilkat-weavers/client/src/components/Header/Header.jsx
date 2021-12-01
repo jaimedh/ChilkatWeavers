@@ -1,21 +1,36 @@
-import './Header.scss';
-import { Link } from 'react-router-dom';
+import "./Header.scss";
+import { NavLink } from "react-router-dom";
 import Logo from "../../assets/images/logo.svg";
 
 function Header() {
-    return (
-        <header className="header">
-            <nav className="header__container">
-                <div className="header__logo-wrapper">
-                       <p className="header__name">Chilkat Weaving</p> 
-                <Link to="/"> <img className="header__logo"src={Logo} alt="Chilkat Logo"/></Link>
-            
-                </div>
-                <div className="header__wrapper">
-                
-                <Link to="/" className="header__Link"><button className="header__btn">Weavers Sign-Up</button></Link>
-            </div></nav>
-        </header>
-    )
+  return (
+    <header className="header">
+      <nav className="header__container">
+          <section className="header__direction">
+        
+          <div className="header__weavers">
+            <NavLink to="/" className="header__link">Chilkat Weaving
+            </NavLink>
+            <NavLink to="/artist" className="header__link">
+              Current Weavers
+            </NavLink>
+          </div>
+          <div className="header__logo-wrapper">
+          <NavLink to="/">
+            <img className="header__logo" src={Logo} alt="Chilkat Logo" />
+          </NavLink>
+          </div>
+        </section>
+        <div className="header__wrapper">
+          <NavLink to="/" className="header__link">
+            <button className="header__btn">Weavers Sign-Up</button>
+          </NavLink>
+          <NavLink to="/" className="header__link">
+            <p className="header__tab">Login</p>
+          </NavLink>
+        </div>
+      </nav>
+    </header>
+  );
 }
 export default Header;
