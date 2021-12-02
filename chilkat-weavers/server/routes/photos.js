@@ -22,7 +22,7 @@ let photo = multer({
 
 router.put
 ('/:id',  photo.single('profile_img'), (req, res) => {
-    console.log(req.file.filename)
+    console.log(req.file)
     knex('users')
       .where({ id: req.params.id })
       .update("file",`/photos/${req.file.filename}`)

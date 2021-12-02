@@ -22,7 +22,7 @@ class SignUp extends Component{
     supply: "",
     fb:"",
     instagram:"",
-    redirect:false
+    // redirect:false
   };
   handleChange = (event) => {
     this.setState({
@@ -54,6 +54,7 @@ class SignUp extends Component{
     event.preventDefault();
     const formData = new FormData();
     formData.append("profile_img", this.state.file);
+    
     const reader = new FileReader();
     const url = reader.readAsDataURL(this.state.file);
     reader.onloadend = (event) => {
@@ -63,19 +64,16 @@ class SignUp extends Component{
     };
 
   
-    for (let value of formData.values()) {
-      console.log(value);
-    }
-    const config = {
-      headers: {
-        "content-type": "multipart/form-data",
-      },
-    };
+    // for (let value of formData.values()) {
+    //   console.log(value);
+    // }
+    // const config = {
+    //   headers: {
+    //     "content-type": "multipart/form-data",
+    //   },
+    // };
 
     console.log(formData);
-
-  
-    
     const newSignup = {
       name: this.state.name,
       community: this.state.community,
@@ -92,13 +90,15 @@ class SignUp extends Component{
     };
     console.log(newSignup); 
 
+    // const data ={objects: [formData, newSignup]};
+
   if (this.isFormValid()) {
     axios
-      .post(`http://localhost:8082/users/`, newSignup, formData )
+      .post(`http://localhost:8082/users/`, formData)
       .then((response) => {
         this.setState({
           users: response.data,
-          redirect:true
+          // redirect:true
         });
         alert("successful upload");
           //history api push
@@ -107,6 +107,7 @@ class SignUp extends Component{
       .catch((error) => {
         console.log(error);
       });
+
     
    
   } else alert("Upload did not complete, please try again");

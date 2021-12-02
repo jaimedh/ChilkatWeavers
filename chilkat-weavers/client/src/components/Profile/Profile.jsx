@@ -1,68 +1,58 @@
 import axios from "axios";
 import { Component } from "react";
 import "./Profile.scss";
-import ProfilePic from "../../assets/images/michelle.jpeg";
-class Profile extends Component {
-    state= {        
-        // imgSrc:"",
-        // file: null,
-        name:"",
-        community:"",
-        nation:"",
-        location:"",
-        crest:"",
-        age:"",
-        teacher:"",
-        experience:"",
-        blanket:"",
-        supply:""
-    }
-    componentDidMount() {
-        this.getProfilebyId();
-       
-    }
 
-    getProfilebyId = () => {
+class Profile extends Component {
+    state= {     
+        profile: null   
+
+    }
+  
+    getProfilebyId = (id) => {
         axios
-        .get(`http://localhost:8082/users/${this.props.match.params.id}`
+        .get(`http://localhost:8082/users/${id}`
         )
     
-    .then(
-        response => {
+    .then((response) => {
         console.log(response.data[0]);
                 
-        this.setState({            
-            name: response.data[0].name,
-            community: response.data[0].community,
-            nation: response.data[0].nation,
-            location: response.data[0].location,
-            crest: response.data[0].crest,
-            age: response.data[0].age,
-            teacher: response.data[0].teacher,
-            experience: response.data[0].experience,
-            blanket: response.data[0].blanket,
-            supply: response.data[0].supply
+        this.setState({     
+             profile: response.data[0], 
+            
         })
-                
+                 
     })
         .catch((error) => console.log(error));
 };
+componentDidMount() {
+    const {id}=this.props.match.params;
+    this.getProfilebyId(id);
+   
+}
 
   render() { 
+      console.log(this.state.profile);
+      if(!this.state.profile) {
+          return<h1>Loading</h1>
+      }
     return (
         <article className="profile">
         <div className="profile__container">
-      <img className="profile__img" src= { ProfilePic } alt="profile"/>
+      {/* <img className="profile__img" src= {`http://localhost:8082${this.state.profile.file}`} alt="profile"/> */}
+
     </div>
     <div className="profile__info">
-            <h1 className="profile__name">{this.state.name}</h1>
-            <h2 className="profile__nation">{this.state.nation}</h2>
-            <p className="profile__crest">Crest: {this.state.crest}</p>
-            <p className="profile__communtiy">Community: {this.state.community}</p>
-            <p className="profile__location">Current Location: {this.state.location}</p>
-            <p className="profile__facebook"></p>
-            <p className="profile__insta"></p>
-            <p className="profile__twitter"></p>
+            {/* <h1 className="profile__name">{this.state.profile.name}</h1> */}
+            <h2 className="profile__nation">{this.state.profile.nation}</h2>
+            <p className="profile__crest">Crest: {this.state.profile.crest}</p>
+            <p className="profile__communtiy">Community: {this.state.profile.community}</p>
+            <p className="profile__location">Current Location: {this.state.profile.location}</p>
+            <p className="profile__age">Age: {this.state.profile.age}</p>
+            <p className="profile__age">Teacher: {this.state.profile.teacher}</p>
+            <p className="profile__supply">Supply: {this.state.profile.supply}</p>
+            <p className="profile__facebook">facebook:{this.state.profile.fb}</p>
+            <p className="profile__insta">Instagram: {this.state.profile.instagram}</p>
+            
     </div>       
 
         </article>

@@ -1,6 +1,8 @@
 import { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import FB from "../../assets/icons/facebook.svg";
+import instagram from "../../assets/icons/instagram.svg";
 
 class EditProfile extends Component {
     state= {
@@ -15,7 +17,9 @@ class EditProfile extends Component {
         teacher:"",
         experience:"",
         blanket:"",
-        supply:""
+        supply:"",
+        fb:"",
+        instagram:"",
     }
     componentDidMount() {
         this.getProfilebyId();
@@ -38,7 +42,9 @@ class EditProfile extends Component {
             teacher: response.data[0].teacher,
             experience: response.data[0].experience,
             blanket: response.data[0].blanket,
-            supply: response.data[0].supply
+            supply: response.data[0].supply,
+            fb: response.data[0].fb,
+            instagram: response.data[0].instagram
         });
         
     })
@@ -58,6 +64,17 @@ handleChange = (event) => {
 // file:event.target.files[0],
 //   })
 // }
+
+isFormValid = () => {
+  // Check if the field is filled
+  if (
+    !this.state.name
+ 
+    ) {
+      return false;
+    }
+    return true;
+  };
 
     handleSubmit =(event) => {
         event.preventDefault();
@@ -81,35 +98,33 @@ handleChange = (event) => {
         //     },
         //   }
 
-      //  const editProfile = {
-      //   name: this.state.name,
-      //   community: this.state.community,
-      //   nation: this.state.nation,
-      //   location: this.state.location,
-      //   crest: this.state.crest,
-      //   age: this.state.age,
-      //   teacher: this.state.teacher,
-      //   experience: this.state.experience,
-      //   blanket: this.state.blanket,
-      //   supply: this.state.supply
-      //  }
+       const editProfile = {
+        name: this.state.name,
+        community: this.state.community,
+        nation: this.state.nation,
+        location: this.state.location,
+        crest: this.state.crest,
+        age: this.state.age,
+        teacher: this.state.teacher,
+        experience: this.state.experience,
+        blanket: this.state.blanket,
+        supply: this.state.supply
+       };
           
+    if (this.isFormValid()) {
+     axios
+      .put(`http://localhost:8082/users/${this.props.match.params.id}`, editProfile)
+      .then((response) => {
+          this.setState({
+              profile: response.data,
+         });
+     })
+      .catch((error) => {
+         console.log(error);
+       });
+       alert("successful upload");
+     } else alert("Upload did not complete, please try again");
     };
-    // editProfile() {
-    // axios
-    //  .put(
-    //      , editSignUp
-    //  )
-    //  .then((response) => {
-    //      this.setState({
-    //          profile: response.data,
-    //      });
-    //  })
-    //  .catch((error) => {
-    //     console.log(error);
-    //   });
-    // }
-
 
   render() {
     return (
@@ -231,6 +246,30 @@ handleChange = (event) => {
               onChange={this.handleChange}
               value={this.state.supply}
             />
+          </label>
+          <h3>Social Media</h3>
+            <label className="signup__label">
+            <h4>Facebook</h4>
+            <textarea
+              className="signup__input"
+              type="text"
+              name="facebook"             
+              value={this.state.fb}
+              onChange={this.handleChange}
+              placeholder="your facebook link"
+            /> 
+          <img className="signup__fb" src={ FB } alt="facebook icon"/>
+          </label>
+            <label className="signup__label">
+            <h4>Instagram</h4>
+            <textarea
+              className="signup__input"
+              type="text"
+              name="instagram"             
+              value={this.state.instagram}
+              onChange={this.handleChange}
+              placeholder="your facebook link"
+            /> <img className="signup__instagram" src={ instagram } alt="instagram icon"/>
           </label>
           <div className="signup__btnwrapper">
               <Link to="/" className="signup__link">
