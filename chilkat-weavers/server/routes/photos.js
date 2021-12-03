@@ -3,13 +3,14 @@ const router = express.Router();
 const knex = require('knex')(require('../knexfile').development);
 const multer = require('multer');
 const fs = require ('fs-extra');
+const { request } = require('express');
 // const photo = multer({ dest: './../public/photos' })
 
 let photo = multer({
   storage: multer.diskStorage({
     destination: (req, file, callback) => {
     
-      let path = `./../public/photos`;
+      let path = `./public/photos`;
       fs.mkdirsSync(path);
       callback(null, path);
     },
@@ -22,16 +23,25 @@ let photo = multer({
 
 router.put
 ('/:id',  photo.single('profile_img'), (req, res) => {
-    console.log(req.file)
+    console.log("file",req.file)
+    console.log("id",req.params.id);
+    usersid = req.params.id;
     knex('users')
       .where({ id: req.params.id })
-      .update("file",`/photos/${req.file.filename}`)
+      .update({file:`/photos/${req.file.filename}`})
+
       .then((data) => {
+        console.log("data id",usersid);
         // promise chaining, return another query and use .then to handle the response
-        return knex('users').where({ id: req.params.id });
+       knex('users').where({ id: req.params.id });
+       return data[0];
+       
+
       })
       .then((data) => {
         res.status(200).json(data);
+        console.log(data);
+        
       })
 
       .catch((err) => {

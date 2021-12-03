@@ -8,8 +8,8 @@ import Twitter from "../../assets/icons/twitter.svg";
 
 class SignUp extends Component{
   state = {
-    imgSrc: "",
-    file: {},
+    // imgSrc: "",
+    // file: {},
     name: "",
     community: "",
     nation: "",
@@ -31,12 +31,12 @@ class SignUp extends Component{
     });
   };
 
-  handleImageChange = (event) => {
-    console.log("image", event.target.files[0]);
-    this.setState({
-      file: event.target.files[0],
-    });
-  };
+  // handleImageChange = (event) => {
+  //   console.log("image", event.target.files[0]);
+  //   this.setState({
+  //     file: event.target.files[0],
+  //   });
+  // };
 
   isFormValid = () => {
     // Check if the field is filled
@@ -52,16 +52,16 @@ class SignUp extends Component{
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const formData = new FormData();
-    formData.append("profile_img", this.state.file);
+    // const formData = new FormData();
+    // formData.append("profile_img", this.state.file);
     
-    const reader = new FileReader();
-    const url = reader.readAsDataURL(this.state.file);
-    reader.onloadend = (event) => {
-      this.setState({
-        imgSrc: [reader.result],
-      });
-    };
+    // const reader = new FileReader();
+    // const url = reader.readAsDataURL(this.state.file);
+    // reader.onloadend = (event) => {
+    //   this.setState({
+    //     imgSrc: [reader.result],
+    //   });
+    // };
 
   
     // for (let value of formData.values()) {
@@ -73,7 +73,7 @@ class SignUp extends Component{
     //   },
     // };
 
-    console.log(formData);
+    // console.log(formData);
     const newSignup = {
       name: this.state.name,
       community: this.state.community,
@@ -88,20 +88,23 @@ class SignUp extends Component{
       fb: this.state.fb,
       instagram: this.state.instagram
     };
-    console.log(newSignup); 
+    // console.log(newSignup); 
 
     // const data ={objects: [formData, newSignup]};
+    // console.log(data);
 
   if (this.isFormValid()) {
     axios
-      .post(`http://localhost:8082/users/`, formData)
+      .post(`http://localhost:8082/users/`, newSignup)
       .then((response) => {
         this.setState({
           users: response.data,
-          // redirect:true
+       
         });
         alert("successful upload");
+        console.log(response.data);
           //history api push
+          this.props.history.push(`/${response.data.id}/addphotos`);
       })
 
       .catch((error) => {
@@ -113,15 +116,15 @@ class SignUp extends Component{
   } else alert("Upload did not complete, please try again");
 };
 
-  render(id) {
- 
+  render() {
+ console.log(this.props.history);
      return (
       <article className="signup">
         <h1 className="signup__title">New Weavers Sign-Up</h1>
 
         <form encType="multipart/form-data" method="post" onSubmit={(this.handleSubmit)} className="signup__form">
           <h2 className="signup__subtitle">Details</h2>
-          <label className="signup__label">
+          {/* <label className="signup__label">
             <h3>Upload Profile Picture</h3>
             <img src={this.state.imgSrc} alt="uploaded file" />
             <input
@@ -129,7 +132,7 @@ class SignUp extends Component{
               name="profile_img"
               onChange={this.handleImageChange}
             />
-          </label>
+          </label> */}
 
           <label className="signup__label">
             <h3>Name</h3>

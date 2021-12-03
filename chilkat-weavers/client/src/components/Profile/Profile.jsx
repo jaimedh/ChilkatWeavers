@@ -9,6 +9,7 @@ class Profile extends Component {
     }
   
     getProfilebyId = (id) => {
+        console.log('id', id);
         axios
         .get(`http://localhost:8082/users/${id}`
         )
@@ -22,7 +23,7 @@ class Profile extends Component {
         })
                  
     })
-        .catch((error) => console.log(error));
+        .catch((error) => console.log("error getting user",error));
 };
 componentDidMount() {
     const {id}=this.props.match.params;
@@ -38,7 +39,7 @@ componentDidMount() {
     return (
         <article className="profile">
         <div className="profile__container">
-      {/* <img className="profile__img" src= {`http://localhost:8082${this.state.profile.file}`} alt="profile"/> */}
+      <img className="profile__img" src= {`http://localhost:8082${this.state.profile.file}`} alt="profile"/>
 
     </div>
     <div className="profile__info">
