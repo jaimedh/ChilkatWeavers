@@ -11,7 +11,7 @@ function Header() {
           <div className="header__weavers">
             <NavLink to="/" className="header__link">Chilkat Weaving
             </NavLink>
-            <NavLink to="/artist" className="header__link">
+            <NavLink to="/weavers" className="header__link">
               Current Weavers
             </NavLink>
           </div>

@@ -6,6 +6,7 @@ import SignUp from "./components/SignUp/SignUp";
 import EditProfile from "./components/EditProfile/EditProfile";
 import AddingPhotos from "./components/AddingPhotos/AddingPhotos";
 import Profile from "./components/Profile/Profile";
+import Weavers from "./components/Weavers/Weavers";
 function App() {
   return (
     <Router>
@@ -26,6 +27,7 @@ function App() {
               <SignUp {...routerProps} />
             )}
           />
+
           <Route
             path="/:id/addphotos"       
             render={(routerProps) => (
@@ -44,6 +46,14 @@ function App() {
               <Profile {...routerProps} />
             )}
           />
+           <Route
+            path="/weavers"
+            exact
+            render={(routerProps) => (
+              <Weavers {...routerProps} />
+            )}
+          />
+          
         </Switch>
       </div>
     </Router>

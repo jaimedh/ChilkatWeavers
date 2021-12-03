@@ -1,0 +1,80 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+.weavers {
+    display: flex;
+    flex-direction: column;
+    max-width: 80rem;
+    // width: 100%;
+    background-color: $nav-color;
+    color: $text-color; 
+    align-items: center;
+    @include tablet {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+
+    &__item {
+    display: flex;
+    flex-direction: column;
+    width: 21rem;
+    margin: 0 auto;
+    border-bottom: solid 1px $yellow;
+    padding: 1rem 0;
+   
+    }
+
+    &__img-container {
+        display: flex;
+        justify-content: center;
+        padding-top: 1rem;
+    }
+
+    &__img {
+        border-radius: 15px;
+        width: 80%;
+        height: 25%;
+        
+       
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid $yellow;
+        border-radius: 15px;  
+        width: 80%;
+        padding: 0.5rem 2rem;
+        margin: 1rem 2rem 0 2rem;
+    }
+    &__name {
+        font-size: 22px;
+        padding: 0.5rem
+    }
+    &__nation {
+        padding: 0.25rem 0.5rem;
+
+        &--span {
+            font-weight: 600;
+        }
+    }
+    &__info {
+        padding: 0.25rem 0.5rem;
+    }
+
+    &__subtitle {
+        padding: 0.75rem;
+    }
+
+    &__social-container {
+        padding: 0.75rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+
+    }
+    &__link {
+        padding: 1rem;
+    }
+}
