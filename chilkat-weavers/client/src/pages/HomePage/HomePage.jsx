@@ -5,10 +5,7 @@ function HomePage() {
     return (
       <div className="homePage">
        
-            <Hero/>       
-
-
-         
+            <Hero/>      
             <Map />       
 
 

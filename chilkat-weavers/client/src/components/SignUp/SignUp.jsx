@@ -2,14 +2,12 @@ import "./SignUp.scss";
 import { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
-import FB from "../../assets/icons/facebook.svg";
-import instagram from "../../assets/icons/instagram.svg";
-import Twitter from "../../assets/icons/twitter.svg";
+
+
 
 class SignUp extends Component{
   state = {
-    // imgSrc: "",
-    // file: {},
+   
     name: "",
     community: "",
     nation: "",
@@ -20,9 +18,10 @@ class SignUp extends Component{
     experience: "",
     blanket: "",
     supply: "",
+    comments:"",
     fb:"",
     instagram:"",
-    // redirect:false
+   
   };
   handleChange = (event) => {
     this.setState({
@@ -85,6 +84,7 @@ class SignUp extends Component{
       experience: this.state.experience,
       blanket: this.state.blanket,
       supply: this.state.supply,
+      comments: this.state.comments,
       fb: this.state.fb,
       instagram: this.state.instagram
     };
@@ -255,10 +255,21 @@ class SignUp extends Component{
               placeholder="where do you get your supplies?"
             />
           </label>
+          <label className="signup__label">
+            <h3>Comments</h3>
+            <textarea
+              className="signup__input"
+              type="text"
+              name="comments"
+              value={this.state.comments}
+               onChange={this.handleChange}
+              placeholder="what inspires you?"
+            />
+          </label>
             <h3>Social Media</h3>
             <label className="signup__label">
             <h4>Facebook</h4>
-            <textarea
+            <input
               className="signup__input"
               type="text"
               name="facebook"             
@@ -266,18 +277,18 @@ class SignUp extends Component{
               onChange={this.handleChange}
               placeholder="your facebook link"
             /> 
-          <img className="signup__fb" src={ FB } alt="facebook icon"/>
+          
           </label>
             <label className="signup__label">
             <h4>Instagram</h4>
-            <textarea
+            <input
               className="signup__input"
               type="text"
               name="instagram"             
               value={this.state.instagram}
               onChange={this.handleChange}
-              placeholder="your facebook link"
-            /> <img className="signup__instagram" src={ instagram } alt="instagram icon"/>
+              placeholder="your instagram link"
+            /> 
           </label>
           
           <div className="signup__btnwrapper">

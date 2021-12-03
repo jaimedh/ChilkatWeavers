@@ -20,6 +20,7 @@ exports.up = function (knex) {
       table.string("experience");
       table.string("blanket");
       table.string("supply");
+      table.string("comments");
       table.string("fb");
       table.string("instagram");
       table.timestamp("updated_at").defaultTo(knex.fn.now());

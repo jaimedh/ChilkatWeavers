@@ -12,10 +12,43 @@
     &__container {
         display: flex;
         justify-content: center;
+        padding-top: 1rem;
     }
     &__img {
         border-radius: 15px;
         width: 80%;
         height: 30%;
+    }
+
+    &__info-wrapper {
+        padding: 0.5rem 2rem;
+    }
+    &__name {
+        font-size: 22px;
+        padding: 0.5rem
+    }
+    &__nation {
+        padding: 0.25rem 0.5rem;
+
+        &--span {
+            font-weight: 400;
+        }
+    }
+    &__info {
+        padding: 0.25rem 0.5rem;
+    }
+
+    &__subtitle {
+        padding: 0.25rem 0.5rem;
+    }
+
+    &__social-container {
+        padding: 0.5rem;
+        display: flex;
+        // justify-content: center;
+
+    }
+    &__link {
+        padding: 0.5rem;
     }
 }

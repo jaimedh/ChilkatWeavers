@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 class AddingPhotos extends Component {
@@ -91,7 +92,9 @@ class AddingPhotos extends Component {
           <button className="signup__btn signup__btn--add" type="submit">
             add photo
           </button>
+          
         </form>
+      
       </article>
     );
   }

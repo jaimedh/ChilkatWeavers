@@ -22,7 +22,7 @@ function Header() {
           </div>
         </section>
         <div className="header__wrapper">
-          <NavLink to="/" className="header__link">
+          <NavLink to="/signup" className="header__link">
             <button className="header__btn">Weavers Sign-Up</button>
           </NavLink>
           <NavLink to="/" className="header__link">

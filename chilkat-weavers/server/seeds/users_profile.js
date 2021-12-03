@@ -2,10 +2,10 @@ const usersData = [
   {
     id: 1,
     file: "photo",
-    name: "Jaime",
-    community: "Lax",
+    name: "Bilhaa'mnelx (Michelle Bryant",
+    community: "Lax Kw'alaams",
     nation: "Tsimshian",   
-    crest: "Eagle",  
+    crest: "Killer Whale",  
   },
   {
     id: 2,
@@ -22,14 +22,15 @@ const usersInfo = [
   {
     id: 3,
     users_id: 1,
-    location: "Victoria",
-    age: "40",
-    teacher: "Willie",
-    experience: "Beginner",
-    blanket: "no",
-    supply: "store", 
-    fb:"facebook", 
-    instagram:"instagram"  
+    location: "Prince Rupert",
+    age: "46",
+    teacher: "Willie White",
+    experience: "Novice",
+    blanket: "",
+    supply: "", 
+    comments: "love weaving",
+    fb:"https:/www.facebook.com/tsimshiandiva", 
+    instagram:"https://instagram.com/m_bryant_diva"  
   },
   {
     id: 4,

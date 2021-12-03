@@ -1,8 +1,7 @@
 import { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import FB from "../../assets/icons/facebook.svg";
-import instagram from "../../assets/icons/instagram.svg";
+
 
 class EditProfile extends Component {
     state= {
@@ -258,7 +257,7 @@ isFormValid = () => {
               onChange={this.handleChange}
               placeholder="your facebook link"
             /> 
-          <img className="signup__fb" src={ FB } alt="facebook icon"/>
+         
           </label>
             <label className="signup__label">
             <h4>Instagram</h4>
@@ -269,7 +268,7 @@ isFormValid = () => {
               value={this.state.instagram}
               onChange={this.handleChange}
               placeholder="your facebook link"
-            /> <img className="signup__instagram" src={ instagram } alt="instagram icon"/>
+            /> 
           </label>
           <div className="signup__btnwrapper">
               <Link to="/" className="signup__link">

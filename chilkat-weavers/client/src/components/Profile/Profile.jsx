@@ -1,6 +1,10 @@
 import axios from "axios";
 import { Component } from "react";
 import "./Profile.scss";
+import FB from "../../assets/icons/Icon-facebook.svg";
+import Insta from "../../assets/icons/Icon-instagram.svg";
+
+
 
 class Profile extends Component {
     state= {     
@@ -42,18 +46,24 @@ componentDidMount() {
       <img className="profile__img" src= {`http://localhost:8082${this.state.profile.file}`} alt="profile"/>
 
     </div>
-    <div className="profile__info">
-            {/* <h1 className="profile__name">{this.state.profile.name}</h1> */}
-            <h2 className="profile__nation">{this.state.profile.nation}</h2>
-            <p className="profile__crest">Crest: {this.state.profile.crest}</p>
-            <p className="profile__communtiy">Community: {this.state.profile.community}</p>
-            <p className="profile__location">Current Location: {this.state.profile.location}</p>
-            <p className="profile__age">Age: {this.state.profile.age}</p>
-            <p className="profile__age">Teacher: {this.state.profile.teacher}</p>
-            <p className="profile__supply">Supply: {this.state.profile.supply}</p>
-            <p className="profile__facebook">facebook:{this.state.profile.fb}</p>
-            <p className="profile__insta">Instagram: {this.state.profile.instagram}</p>
+    <div className="profile__info-wrapper">
+            <h1 className="profile__name">{this.state.profile.name}</h1>
+            <h2 className="profile__nation"><span className="profile__nation--span">Nation:</span> {this.state.profile.nation}</h2>
+            <p className="profile__info">Crest: {this.state.profile.crest}</p>
+            <p className="profile__info">Community: {this.state.profile.community}</p>
+            <p className="profile__info">Current Location: {this.state.profile.location}</p>
+            <p className="profile__info">Age: {this.state.profile.age}</p>
+            <p className="profile__info">Teacher: {this.state.profile.teacher}</p>
+            <p className="profile__info">Experience: {this.state.profile.experience}</p>
+            {/* <p className="profile__info"> {this.state.profile.blanket}</p> */}
+            <p className="profile__info">Suppliers: {this.state.profile.supply}</p>
+            <p className="profile__info profile__comments">Comments: {this.state.profile.comments}</p>
+            <h3 className="profile__subtitle">Social Media Links</h3>
+            <div className="profile__social-container">
             
+            <a className="profile__link"href={this.state.profile.fb} target="_blank"><img className="profile__icon" src={FB} alt= "facebook logo"/></a>
+            <a className="profile__link" href={this.state.profile.instagram} target="_blank"><img className="profile__icon" src={Insta} alt= "Instagram logo"/></a> 
+            </div>
     </div>       
 
         </article>
