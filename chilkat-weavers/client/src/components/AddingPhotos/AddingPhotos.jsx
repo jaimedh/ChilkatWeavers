@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import logo from "../../assets/images/logo.svg";
 
 class AddingPhotos extends Component {
   state = {
@@ -14,28 +15,27 @@ class AddingPhotos extends Component {
       file: event.target.files[0],
     });
   };
-  isFormValid = () => {
-    // Check if the field is filled
-    if (
-      !this.state.file
-      ) {
-        return false;
-      }
-      return true;
-    };
+  // isFormValid = () => {
+  //   // Check if the field is filled
+  //   if (
+  //     !this.state.file
+  //     ) {
+  //       return false;
+  //     }
+  //     return true;
+  //   };
   handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData();
     formData.append("profile_img", this.state.file);
     const reader = new FileReader();
-    const url = reader.readAsDataURL(this.state.file);
+    // const url = reader.readAsDataURL(this.state.file);
     reader.onloadend = (event) => {
       this.setState({
         imgSrc: [reader.result],
       });
     };
 
-  
     for (let value of formData.values()) {
       console.log(value);
     }
@@ -47,23 +47,26 @@ class AddingPhotos extends Component {
 
     console.log(formData);
 
-    if (this.isFormValid()) {
-      axios
-        .put(`http://localhost:8082/images/${this.props.match.params.id}`, formData)
-        .then((response) => {
-          this.setState({
-            users: response.data,
-          });
-          alert("successful upload");
-          console.log(response.data);
-          this.props.history.push(`/${this.props.match.params.id}/profile`);
-        })
-
-        .catch((error) => {
-          console.log(error);
+    // if (this.isFormValid()) {
+    axios
+      .put(
+        `http://localhost:8082/images/${this.props.match.params.id}`,
+        formData
+      )
+      .then((response) => {
+        this.setState({
+          users: response.data,
         });
-      
-    } else alert("Upload did not complete, please try again");
+        alert("successful upload");
+        console.log(response.data);
+        this.props.history.push(`/${this.props.match.params.id}/profile`);
+      })
+
+      .catch((error) => {
+        console.log(error);
+      });
+
+    // } else alert("Upload did not complete, please try again");
   };
 
   render() {
@@ -81,6 +84,7 @@ class AddingPhotos extends Component {
           <h2 className="signup__subtitle">Details</h2>
           <label className="signup__label">
             <h3>Upload Profile Picture</h3>
+            <img src={logo} alt="default photo" />
             <img src={this.state.imgSrc} alt="uploaded file" />
             <input
               type="file"
@@ -92,9 +96,7 @@ class AddingPhotos extends Component {
           <button className="signup__btn signup__btn--add" type="submit">
             add photo
           </button>
-          
         </form>
-      
       </article>
     );
   }

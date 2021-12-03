@@ -1,16 +1,26 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 .weavers {
-    display: flex;
-    flex-direction: column;
-    max-width: 80rem;
+    // display: flex;
+    // flex-direction: column;
+    // max-width: 80rem;
     // width: 100%;
     background-color: $nav-color;
     color: $text-color; 
     align-items: center;
-    @include tablet {
+    
+    &__list {
+        display: flex;
+    flex-direction: column;
+    max-width: 80rem;
+    // width: 100%;
+   
+    align-items: center;
+        
+        @include tablet {
         flex-direction: row;
         flex-wrap: wrap;
+    }
     }
     
 
