@@ -1,9 +1,12 @@
 const express = require("express");
 const router = express.Router();
+const jwt = require('jsonwebtoken');
 const knex = require("knex")(require("../knexfile").development);
 const multer = require("multer");
 const fs = require("fs-extra");
 const { request } = require("express");
+
+
 // const photo = multer({ dest: './../public/photos' })
 
 // let photo = multer({
@@ -20,6 +23,25 @@ const { request } = require("express");
 //   }),
 // });
 //get all users photo.single('profile_img'),
+
+const authorize = (req, res, next) => {
+  if (!req.headers.authorization) {
+    return res.status(401).json({message: 'No token found'})
+  }
+  const authTokenArray = req.headers.authorization.split(' ');
+  if (authTokenArray[0].toLowerCase() !== 'bearer' && authTokenArray.length !== 2) {
+    return res.status(401).json({message: 'Invalid token'});
+  }
+
+  jwt.verify(authTokenArray[1], process.env.JWT_SECRET, (err, decoded) => {
+    if (err) {
+      return res.status(401).json({message: 'The token is expired or invalid'});
+    }
+    req.payload = decoded;
+    next();
+  });
+}
+
 router.get("/", (request, respond) => {
   knex("users")
     .join("usersinfo", "usersinfo.users_id", "users.id") // join users table
@@ -75,7 +97,8 @@ router.get("/", (request, respond) => {
 //   });
 
 //get posts by user with id, using inner join
-router.get("/:id", (req, res) => {
+router.get("/:id", authorize, (req, res) => {
+
   console.log(req.params);
   knex("users")
     .join("usersinfo", "usersinfo.users_id", "users.id") // join users table
@@ -86,7 +109,10 @@ router.get("/:id", (req, res) => {
           message: `User not found with the id ${req.params.id}`,
         });
       } else {
-        res.status(200).json(data);
+        res.status(200).json({
+          tokenInfo: req.payload,
+          sensitiveInformation: data
+        });
       }
     })
     .catch(() => {
@@ -98,7 +124,8 @@ router.get("/:id", (req, res) => {
 
 //new user photo.single("profile_img"),
 
-router.post("/",  (request, respond) => {
+router.post("/", (request, respond) => {
+
   console.log("text", request.body);
   // if (!request.body.name) {
   //   respond.status(400).json({ message: `Please provide a name for the user` });

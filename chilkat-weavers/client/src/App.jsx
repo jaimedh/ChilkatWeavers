@@ -4,6 +4,7 @@ import Header from "./components/Header/Header";
 import HomePage from "./pages/HomePage/HomePage";
 import SignUp from "./components/SignUp/SignUp";
 import EditProfile from "./components/EditProfile/EditProfile";
+import Login from "./components/Login/Login";
 import AddingPhotos from "./components/AddingPhotos/AddingPhotos";
 import Profile from "./components/Profile/Profile";
 import Weavers from "./components/Weavers/Weavers";
@@ -40,6 +41,13 @@ function App() {
               <EditProfile {...routerProps} />
             )}
           />
+           <Route
+            path="/login"
+            render={(routerProps) => (
+              <Login {...routerProps} />
+            )}
+          />
+
           <Route
             path="/:id/profile"
             render={(routerProps) => (
