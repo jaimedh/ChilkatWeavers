@@ -14,8 +14,13 @@ class Profile extends Component {
   
     getProfilebyId = (id) => {
         console.log('id', id);
+        const authToken = sessionStorage.getItem("clientAuthToken");
         axios
-        .get(`http://localhost:8082/users/${id}`
+        .get(`http://localhost:8082/users/${id}`,
+        {headers: {
+            authorization: `Bearer ${authToken}`,
+          },
+        }
         )
     
     .then((response) => {

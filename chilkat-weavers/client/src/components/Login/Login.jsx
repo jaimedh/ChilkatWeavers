@@ -1,5 +1,7 @@
+import { Route } from "react-router-dom";
 import axios from "axios";
 import React, { Component } from "react";
+import Profile from "../Profile/Profile";
 
 export class Login extends Component {
   state = {
@@ -23,6 +25,7 @@ export class Login extends Component {
       .then((response) => {
         sessionStorage.setItem("clientAuthToken", response.data.token);
         this.fetchProfile(response.data.token);
+        
       })
       .catch((err) => console.log("login error", err));
   };
@@ -55,21 +58,12 @@ export class Login extends Component {
         )}
         {this.state.isLoggedIn && (
           <>
-            <h2>Authorized Page</h2>
-            {/* <h3>
-              Welcome,
-              {this.state.profileData && this.state.profileData.tokenInfo.name}
-            </h3>
-            <h3>
-              User Name:{" "}
-              {this.state.profileData &&
-                this.state.profileData.tokenInfo.username}
-            </h3>
-            <h3>
-              Loves:{" "}
-              {this.state.profileData &&
-                this.state.profileData.sensitiveInformation.secret}
-            </h3> */}
+          <Route
+            path="/:id/profile"
+            render={(routerProps) => (
+              <Profile {...routerProps} />
+            )}
+          />
           </>
         )}
       </div>

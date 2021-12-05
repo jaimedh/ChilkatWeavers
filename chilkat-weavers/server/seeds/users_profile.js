@@ -1,25 +1,43 @@
 const usersData = [
   {
     id: 1,
+    username: "user1",
+    password: "testuser",
     file: "photo",
-    name: "Bilhaa'mnelx (Michelle Bryant",
+    name: "Jaime",
     community: "Lax Kw'alaams",
     nation: "Tsimshian",   
-    crest: "Killer Whale",  
+    crest: "Eagle",  
   },
   {
     id: 2,
     file: "photo2",
-    name: "Cara",
+    name: "Bilhaa'mnelx (Michelle Bryant)",
     community: "Lax KwAlaams",
     nation: "Tsimshian",   
-    crest: "Eagle",  
+    crest: "Killerwhale",  
   },
 
 ]
 
 const usersInfo = [
   {
+      id: 4,
+      users_id: 2,
+      location: "Coombs",
+      age: "43",
+      teacher: "May",
+      experience: "Beginner",
+      blanket: "no",
+      supply: "shop", 
+      comments:"weaving through life",
+      website:"www.weaver.com",
+      fb:"facebook", 
+      instagram:"instagram",
+      twitter:"twitter",
+
+    },
+ {
     id: 3,
     users_id: 1,
     location: "Prince Rupert",
@@ -29,21 +47,12 @@ const usersInfo = [
     blanket: "",
     supply: "", 
     comments: "love weaving",
+    website:"www.weaver.com",
     fb:"https:/www.facebook.com/tsimshiandiva", 
-    instagram:"https://instagram.com/m_bryant_diva"  
+    instagram:"https://instagram.com/m_bryant_diva",  
+    twitter:"twitter",
   },
-  {
-    id: 4,
-    users_id: 2,
-    location: "Coombs",
-    age: "43",
-    teacher: "May",
-    experience: "Beginner",
-    blanket: "no",
-    supply: "shop", 
-    fb:"facebook", 
-    instagram:"instagram" 
-  },
+
   
 
 ]
