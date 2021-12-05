@@ -122,6 +122,7 @@ isFormValid = () => {
          console.log(error);
        });
        alert("successful upload");
+       this.props.history.push(`/${this.props.match.params.id}/addphotos`);
      } else alert("Upload did not complete, please try again");
     };
 
@@ -278,7 +279,7 @@ isFormValid = () => {
                 className="signup__btn signup__btn--add"
                 type="submit" value="submit"
               >
-                Sign-Up
+                Submit
               </button>
             </div>
           

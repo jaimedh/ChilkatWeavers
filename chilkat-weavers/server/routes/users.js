@@ -165,47 +165,50 @@ router.post("/",  (request, respond) => {
 //   });
 //  });
 
-//update user
-// router.put("/:id", (request, respond) => {
-//   console.log(request.body);
-//   const usersData = {
-//     name: request.body.name,
-//     community: request.body.community,
-//     nation: request.body.nation,
-//     crest: request.body.crest
-//   }
-//   const usersMoreData = {
-//     location: request.body.location,
-//     age: request.body.age,
-//     teacher: request.body.teacher,
-//     experience: request.body.experience,
-//     blanket: request.body.blanket,
-//     supply: request.body.supply,
-//     fb: request.body.fb,
-//     instagram: request.body.instagram
-//   }
-//   knex("users")
-//     .where({ id: request.params.id })
-//     .update(usersData)
-//     .then((data) => {
-//       console.log(data);
-//       usersMoreData.users_id = data[0];
-//       return knex("usersinfo")
-//         .where({ id: request.params.id })
-//         .update(usersMoreData);
-//     })
-//     .then((data) => {
-//       console.log(data);
-//       respond.status(200).json({
-//         message: `User ${request.body.name} created successfully with the id ${data}`,
-//       });
-//     })
-//     .catch(() => {
-//       respond.status(400).json({
-//         message: `Error updating user ${request.params.id}`,
-//       });
-//     });
-// });
+// update user
+router.put("/:id", (request, respond) => {
+  console.log(request.body);
+  const usersData = {
+    name: request.body.name,
+    community: request.body.community,
+    nation: request.body.nation,
+    crest: request.body.crest
+  }
+  const usersMoreData = {
+    location: request.body.location,
+    age: request.body.age,
+    teacher: request.body.teacher,
+    experience: request.body.experience,
+    blanket: request.body.blanket,
+    supply: request.body.supply,
+    fb: request.body.fb,
+    instagram: request.body.instagram
+  }
+  let userId
+  knex("users")
+    .where({ id: request.params.id })
+    .update(usersData)
+    .then((data) => {
+      console.log(data);
+      userId = data[0];
+      usersMoreData.users_id = data[0];
+      return knex("usersinfo")
+        .where({ id: request.params.id })
+        .update(usersMoreData);
+    })
+    .then((data) => {
+      console.log(data);
+      respond.status(200).json({
+        id:userId,
+        message: `User ${request.body.name} created successfully with the id ${data}`,
+      });
+    })
+    .catch(() => {
+      respond.status(400).json({
+        message: `Error updating user ${request.params.id}`,
+      });
+    });
+});
 
 // delete user
 router.delete("/:id", (request, respond) => {

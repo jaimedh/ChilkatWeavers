@@ -1,7 +1,7 @@
 const usersData = [
   {
     id: 1,
-    file: "photo",
+    file: "/photos/michelle.jpeg",
     name: "Bilhaa'mnelx (Michelle Bryant",
     community: "Lax Kw'alaams",
     nation: "Tsimshian",   
@@ -25,12 +25,14 @@ const usersInfo = [
     location: "Prince Rupert",
     age: "46",
     teacher: "Willie White",
-    experience: "Novice",
+    experience: "5 years",
     blanket: "",
     supply: "", 
     comments: "love weaving",
+    website:"",
     fb:"https:/www.facebook.com/tsimshiandiva", 
-    instagram:"https://instagram.com/m_bryant_diva"  
+    instagram:"https://instagram.com/m_bryant_diva", 
+    twitter:"",
   },
   {
     id: 4,
@@ -41,8 +43,11 @@ const usersInfo = [
     experience: "Beginner",
     blanket: "no",
     supply: "shop", 
+    comments:"weaving is life",
+    website:"",
     fb:"facebook", 
-    instagram:"instagram" 
+    instagram:"instagram", 
+    twitter:"",
   },
   
 

@@ -21,8 +21,11 @@ exports.up = function (knex) {
       table.string("blanket");
       table.string("supply");
       table.string("comments");
+      table.string("website");
       table.string("fb");
       table.string("instagram");
+      table.string("twitter");
+
       table.timestamp("updated_at").defaultTo(knex.fn.now());
       table
         .foreign("users_id")
