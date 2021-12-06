@@ -1,4 +1,5 @@
 import { Component } from "react";
+import "./AddingPhotos.scss";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import logo from "../../assets/images/logo.svg";
@@ -21,9 +22,11 @@ class AddingPhotos extends Component {
   //     !this.state.file
   //     ) {
   //       return false;
+
   //     }
   //     return true;
   //   };
+
   handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData();
@@ -72,30 +75,32 @@ class AddingPhotos extends Component {
   render() {
     console.log(this.props.history);
     return (
-      <article className="signup">
-        <h1 className="signup__title">New Weavers Sign-Up</h1>
+      <article className="add-photo">
+        <h1 className="add-photo__title">Upload a Profile Picture</h1>
 
         <form
           encType="multipart/form-data"
           method="post"
           onSubmit={this.handleSubmit}
-          className="signup__form"
+          className="add-photo__form"
         >
-          <h2 className="signup__subtitle">Details</h2>
-          <label className="signup__label">
-            <h3>Upload Profile Picture</h3>
-            <img src={logo} alt="default photo" />
-            <img src={this.state.imgSrc} alt="uploaded file" />
-            <input
+        
+          <label className="add-photo__label">
+            {/* <h3>Upload Profile Picture</h3> */}
+            <img className="add-photo__img" src={logo} alt="default photo" />
+            {/* <img src={this.state.imgSrc} alt="uploaded file" /> */}
+            <input className="add-photo__input"
               type="file"
+              accept="image/*"
               name="profile_img"
               onChange={this.handleImageChange}
             />
           </label>
-
-          <button className="signup__btn signup__btn--add" type="submit">
-            add photo
+          <div className="add-photos__btn-wrapper">
+          <button className="add-photo__btn" type="submit">
+            submit photo
           </button>
+          </div>
         </form>
       </article>
     );

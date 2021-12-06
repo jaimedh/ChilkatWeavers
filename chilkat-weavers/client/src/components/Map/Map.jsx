@@ -30,7 +30,7 @@ class Map extends Component {
             const {lat, long} = success.coords
             axios
             .get(
-                `https://native-land.ca/api/index.php?maps=languages&position=${lat},${long}` 
+                `https://native-land.ca/api/index.php?maps=territories&name=tsimshian,kwakwakawakw,tlingit,haida` 
             )
             .then((response) => {
                 console.log(response);
@@ -43,6 +43,9 @@ class Map extends Component {
     render() {
         return (
             <article className="map">
+                <h2 className="map__title">Tradition Territories</h2>
+                <h3 className="map__subtitle">Tsimshian, Tligit, Haida & Kwakwakawakw</h3>
+
 <iframe className="map__iframe" src="https://native-land.ca/api/embed/embed.html?maps=territories&name=tsimshian,kwakwakawakw,tlingit,haida"></iframe>
 
 

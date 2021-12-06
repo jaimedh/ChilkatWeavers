@@ -1,31 +1,35 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 .hero {
-    display: flex;
-    flex-direction: column;
-    background-color: $nav-color;
-    color: $text-color;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $nav-color;
+  color: $text-color;
 
-    &__image{
+  &__image {
     width: 100%;
     height: 30%;
-    background-image: url("../../assets/images/dancing.JPG");
+    background-image: url("../../assets/images/Lilyweaving.JPG");
     background-size: cover;
-  background-position: top;
-  background-repeat: no-repeat;
-  height: 22rem;
-  margin: 0 auto;
-  @include tablet {
-      width: 60%;
+    background-position: top;
+    background-repeat: no-repeat;
+    height: 22rem;
+    margin: 0 auto;
+    @include tablet {
+      width: 100%;
       height: 40rem;
-      margin: 0
-
+      margin: 0;
+    }
   }
-  
-    
-}
-a.hero__link {
+  &__title {
+      padding: 1rem;
+  }
+  &__text-wrapper {
+      padding: 0 1rem;
+  }
+  a.hero__link {
     text-decoration: none;
     color: $text-color;
-}
+  }
 }

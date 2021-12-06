@@ -49,18 +49,38 @@ const usersInfo = [
     instagram:"instagram", 
     twitter:"",
   },
+]
+
+  const landingphotos = [
+    {
+      id:111,
+      file: "/gallery/dancing.JPG",
+      info:"Lily Hope, photographed by, @SydneyAkagiPhoto",
+      comments:"",
+    },
+    {
+      id:112,
+      file: "/gallery/maskonbranch.JPG",
+      info:"Lily Hope, photographed by, @SydneyAkagiPhoto",
+      comments:"",
+    }
+  ]
   
 
-]
+
 exports.seed = function(knex) {
   // Deletes ALL existing entries
   return knex('users').del()
-    .then(function () {
-      // Inserts seed entries
+    .then(function () { // Inserts seed entries     
       return knex('users').insert(usersData);
     }).then(function(){
       return knex('usersInfo').del();
     }).then(function() {
       return knex('usersInfo').insert(usersInfo);
-    });
+    }).then(function(){
+      return knex('landingphotos').del()
+    }).then(function() {
+      return knex('landingphotos').insert(landingphotos);
+    })
+
 };

@@ -35,17 +35,15 @@ exports.up = function (knex) {
         .onDelete("CASCADE");
     })
 
-    // .createTable("photos", (table) => {
-    //   table.increments("id"); //photos id
-    //   table.string("file");
-    //   table
-    //   .foreign("users_id")
-    //   .references("id")
-    //   .inTable("users")
-    //   .onUpdate("CASCADE")
-    //   .onDelete("CASCADE");
-
-    // });
+    .createTable("landingphotos", (table) => {
+      table.increments("id"); //photos id
+      table.string("file");
+      table.string("info");
+      table.string("comments");
+      table.timestamp("updated_at").defaultTo(knex.fn.now());
+      // .foreign("users_id")
+      
+    });
 };
 
 exports.down = function (knex) {

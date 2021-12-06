@@ -52,5 +52,18 @@ router.put
       });
   });
 
+  //get all photos
+  router.get('/', (req, res) => {
+    knex('landingphotos')
+      .then((data) => {
+        res.status(200).json(data);
+      })
+      .catch(() => {
+        res.status(400).json({
+          message: `Error getting posts`,
+        });
+      });
+  });
+
 
   module.exports=router;

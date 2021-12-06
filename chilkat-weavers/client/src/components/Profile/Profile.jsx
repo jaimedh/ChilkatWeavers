@@ -48,21 +48,21 @@ componentDidMount() {
     </div>
     <div className="profile__info-wrapper">
             <h1 className="profile__name">{this.state.profile.name}</h1>
-            <h2 className="profile__nation"><span className="profile__nation--span">Nation:</span> {this.state.profile.nation}</h2>
-            <p className="profile__info">Crest: {this.state.profile.crest}</p>
-            <p className="profile__info">Community: {this.state.profile.community}</p>
-            <p className="profile__info">Current Location: {this.state.profile.location}</p>
-            <p className="profile__info">Age: {this.state.profile.age}</p>
-            <p className="profile__info">Teacher: {this.state.profile.teacher}</p>
-            <p className="profile__info">Experience: {this.state.profile.experience}</p>
+            <p className="profile__nation">Nation: <span className="profile__info--span">{this.state.profile.nation}</span></p>
+            <p className="profile__info">Crest: <span className="profile__info--span">{this.state.profile.crest}</span></p>
+            <p className="profile__info">Community: <span className="profile__info--span">{this.state.profile.community}</span></p>
+            <p className="profile__info">Current Location: <span className="profile__info--span">{this.state.profile.location}</span></p>
+            <p className="profile__info">Age: <span className="profile__info--span">{this.state.profile.age}</span></p>
+            <p className="profile__info">Teacher: <span className="profile__info--span">{this.state.profile.teacher}</span></p>
+            <p className="profile__info">Experience: <span className="profile__info--span">{this.state.profile.experience}</span></p>
             {/* <p className="profile__info"> {this.state.profile.blanket}</p> */}
-            <p className="profile__info">Suppliers: {this.state.profile.supply}</p>
-            <p className="profile__info profile__comments">Comments: {this.state.profile.comments}</p>
+             <p className="profile__info">Suppliers: <span className="profile__info--span">{this.state.profile.supply}</span></p>
+            <p className="profile__info profile__comments">Comments: <span className="profile__info--span">{this.state.profile.comments}</span></p>
             <h3 className="profile__subtitle">Social Media Links</h3>
             <div className="profile__social-container">
             
-            <a className="profile__link"href={this.state.profile.fb} target="_blank"><img className="profile__icon" src={FB} alt= "facebook logo"/></a>
-            <a className="profile__link" href={this.state.profile.instagram} target="_blank"><img className="profile__icon" src={Insta} alt= "Instagram logo"/></a> 
+            <a className="profile__link"href={this.state.profile.fb} target="_blank" rel="noreferrer"><img className="profile__icon" src={FB} alt= "facebook logo"/></a>
+            <a className="profile__link" href={this.state.profile.instagram} target="_blank" ><img className="profile__icon" src={Insta} alt= "Instagram logo"/></a> 
             </div>
     </div>       
 

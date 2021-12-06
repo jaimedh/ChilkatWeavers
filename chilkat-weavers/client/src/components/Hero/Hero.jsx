@@ -1,14 +1,27 @@
 import "./Hero.scss";
-import dancing from "../../assets/images/dancing.JPG";
-import { Link } from "react-router-dom";
+
+
+// import { Link } from "react-router-dom";
 
 function Hero() {
-    return (
-        <article className="hero">
-            {/* <h1 className="hero__title">Chilkat Weavers Today</h1> */}
-          <section className="hero__image"></section>
-          <a href="https://instagram.com/sydneyakagiphoto" target="_blank" className="hero__link"> photographer: @SydneyAkagiPhoto </a>
-        </article>
-    )
+  return (
+    <article className="hero">
+      <h1 className="hero__title">Today's Chilkat Weavers</h1>
+      <section className="hero__image">  </section>
+      <div className="hero__text-wrapper">
+          <span className="hero__text">Weaver Lily Hope</span>
+      <a
+        href="https://instagram.com/sydneyakagiphoto"
+        target="_blank"
+        rel="noreferrer"
+        className="hero__link"
+      >
+        {" "}
+        photographed by, @SydneyAkagiPhoto{" "}
+      </a>
+      </div>
+    
+    </article>
+  );
 }
 export default Hero;
