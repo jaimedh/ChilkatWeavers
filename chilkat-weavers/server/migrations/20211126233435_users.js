@@ -18,7 +18,7 @@ exports.up = function (knex) {
       table.string("age");
       table.string("teacher");
       table.string("experience");
-      table.string("blanket");
+      table.boolean("blanket");
       table.string("supply");
       table.string("comments");
       table.string("website");

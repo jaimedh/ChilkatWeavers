@@ -105,7 +105,7 @@ router.post("/",  (request, respond) => {
   //   return;
   // }
   const usersData = {
-    file: null,
+    file: "/photos/logo.svg",
     name: request.body.name,
     community: request.body.community,
     nation: request.body.nation,

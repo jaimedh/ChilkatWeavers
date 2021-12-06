@@ -24,6 +24,10 @@
   }
   &__title {
       padding: 1rem;
+      @include tablet{
+          padding: 2rem;
+          font-size: 32px;
+      }
   }
   &__text-wrapper {
       padding: 0 1rem;

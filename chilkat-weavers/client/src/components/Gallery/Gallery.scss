@@ -1,36 +1,72 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 .gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1rem;
+  color: $nav-color;
+  &__list {
     display: flex;
     flex-direction: column;
     align-items: center;
-   color: $nav-color;
-    &__list {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-         max-width:80rem;
+    max-width: 80rem;
+  }
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 21rem;
+    margin: 0 auto;
+    @include tablet {
+        flex-direction: row;
+        width: 90%;
     }
-    &__item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 21rem;
-        margin: 0 auto;
+  }
+  &__img-wrapper {
+      display: flex;
+      justify-content: center;
+      @include tablet {
+        margin: 1.5rem;
     }
+  }
 
-    &__img {
-        border-radius: 15px;
-        width: 80%;
-        height: 25%;  
-    }
 
-    &__info-wrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 80%;
-        margin: 0 auto;
+  &__img {
+    border-radius: 15px;
+    width: 80%;
+    height: 25%;
+    @include tablet {
+        width: 20rem;
+        margin: 1.5rem;
     }
+  }
+
+  &__info-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1rem ;
+    width: 80%;
+    margin: 0 auto;
+     @include tablet {
+          font-size: 24px;
+    //       border: 2px solid $nav-color;
+    //       border-radius: 15px;
+       }
+  }
+  &__info {
+      padding: 0.5rem;
+     
+      
+  }
+  &__comments {
+      padding: 0.5rem 0.5rem 1rem;
+      border-bottom: 1px solid $nav-color;
+      @include tablet {
+          border-bottom: none;
+      }
+  }
+
+
 
 }

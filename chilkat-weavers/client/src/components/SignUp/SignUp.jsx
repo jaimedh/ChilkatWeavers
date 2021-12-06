@@ -3,11 +3,8 @@ import { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
 
-
-
-class SignUp extends Component{
+class SignUp extends Component {
   state = {
-   
     name: "",
     community: "",
     nation: "",
@@ -16,17 +13,20 @@ class SignUp extends Component{
     age: "",
     teacher: "",
     experience: "",
-    blanket: "",
+    blanket: false,
     supply: "",
-    comments:"",
-    fb:"",
-    instagram:"",
-   
+    comments: "",
+    fb: "",
+    instagram: "",
   };
+  handleCheckboxChange = (event) => {
+    this.setState({
+      blanket: !this.state.blanket
+    })
+  }
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value,
-      
     });
   };
 
@@ -39,21 +39,17 @@ class SignUp extends Component{
 
   isFormValid = () => {
     // Check if the field is filled
-    if (
-      !this.state.name ||
-      !this.state.nation
-      ) {
-        return false;
-      }
-      return true;
-    };
-
+    if (!this.state.name || !this.state.nation) {
+      return false;
+    }
+    return true;
+  };
 
   handleSubmit = (event) => {
     event.preventDefault();
     // const formData = new FormData();
     // formData.append("profile_img", this.state.file);
-    
+
     // const reader = new FileReader();
     // const url = reader.readAsDataURL(this.state.file);
     // reader.onloadend = (event) => {
@@ -62,7 +58,6 @@ class SignUp extends Component{
     //   });
     // };
 
-  
     // for (let value of formData.values()) {
     //   console.log(value);
     // }
@@ -86,43 +81,44 @@ class SignUp extends Component{
       supply: this.state.supply,
       comments: this.state.comments,
       fb: this.state.fb,
-      instagram: this.state.instagram
+      instagram: this.state.instagram,
     };
-    // console.log(newSignup); 
+    // console.log(newSignup);
 
     // const data ={objects: [formData, newSignup]};
     // console.log(data);
 
-  if (this.isFormValid()) {
-    axios
-      .post(`http://localhost:8082/users/`, newSignup)
-      .then((response) => {
-        this.setState({
-          users: response.data,
-       
-        });
-        alert("successful upload");
-        console.log(response.data);
+    if (this.isFormValid()) {
+      axios
+        .post(`http://localhost:8082/users/`, newSignup)
+        .then((response) => {
+          this.setState({
+            users: response.data,
+          });
+          alert("successful upload");
+          console.log(response.data);
           //history api push
           this.props.history.push(`/${response.data.id}/addphotos`);
-      })
+        })
 
-      .catch((error) => {
-        console.log(error);
-      });
-
-    
-   
-  } else alert("Upload did not complete, please try again");
-};
+        .catch((error) => {
+          console.log(error);
+        });
+    } else alert("Upload did not complete, please try again");
+  };
 
   render() {
- console.log(this.props.history);
-     return (
+    console.log(this.props.history);
+    return (
       <article className="signup">
         <h1 className="signup__title">New Weavers Sign-Up</h1>
 
-        <form encType="multipart/form-data" method="post" onSubmit={(this.handleSubmit)} className="signup__form">
+        <form
+          encType="multipart/form-data"
+          method="post"
+          onSubmit={this.handleSubmit}
+          className="signup__form"
+        >
           <h2 className="signup__subtitle">Details</h2>
           {/* <label className="signup__label">
             <h3>Upload Profile Picture</h3>
@@ -168,7 +164,7 @@ class SignUp extends Component{
               placeholder="Nation"
             />
           </label>
-            <label className="signup__label">
+          <label className="signup__label">
             <h3>Crest</h3>
             <input
               className="signup__input"
@@ -190,7 +186,7 @@ class SignUp extends Component{
               placeholder="Current Approximate Location"
             />
           </label>
-        
+
           <label className="signup__label">
             <h3>Age</h3>
             <input
@@ -218,11 +214,10 @@ class SignUp extends Component{
             <select
               className="signup__input"
               onChange={this.handleChange}
-             
               type="text"
               name="experience"
-              defaultValue={this.state.experience}>
-            
+              defaultValue={this.state.experience}
+            >
               <option value="Beginner">Beginner</option>
               <option value="Novice">Novice</option>
               <option value="Intermediate">Intermediate</option>
@@ -231,17 +226,16 @@ class SignUp extends Component{
             </select>
           </label>
           <label className="signup__label">
-            <h3> 
+            <h3>
               I have woven a full sized 56" or wider Chilkat dancing blanket"
             </h3>
             <input
               className="signup__input"
               type="checkbox"
               name="blanket"
-              value="yes"
-              onChange={this.handleChange}
+              value={this.state.blanket}
+              onChange={this.handleCheckboxChange}
             />
-            
           </label>
 
           <label className="signup__label">
@@ -251,7 +245,7 @@ class SignUp extends Component{
               type="text"
               name="supply"
               value={this.state.supply}
-               onChange={this.handleChange}
+              onChange={this.handleChange}
               placeholder="where do you get your supplies?"
             />
           </label>
@@ -262,35 +256,34 @@ class SignUp extends Component{
               type="text"
               name="comments"
               value={this.state.comments}
-               onChange={this.handleChange}
+              onChange={this.handleChange}
               placeholder="what inspires you?"
             />
           </label>
-            <h3>Social Media</h3>
-            <label className="signup__label">
+          <h3>Social Media</h3>
+          <label className="signup__label">
             <h4>Facebook</h4>
             <input
               className="signup__input"
               type="text"
-              name="facebook"             
+              name="facebook"
               value={this.state.fb}
               onChange={this.handleChange}
               placeholder="your facebook link"
-            /> 
-          
+            />
           </label>
-            <label className="signup__label">
+          <label className="signup__label">
             <h4>Instagram</h4>
             <input
               className="signup__input"
               type="text"
-              name="instagram"             
+              name="instagram"
               value={this.state.instagram}
               onChange={this.handleChange}
               placeholder="your instagram link"
-            /> 
+            />
           </label>
-          
+
           <div className="signup__btnwrapper">
             <Link to="/" className="signup__link">
               <button className="signup__btn">Cancel</button>

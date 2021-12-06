@@ -31,11 +31,13 @@ class Gallery extends Component {
           {this.state.photos.map((photo) => {
             return (
               <li key={photo.id} className="gallery__item">
+                  <div className="gallery__img-wrapper">
                 <img
                   className="weavers__img"
                   src={`http://localhost:8082${photo.file}`}
                   alt="weavers"
                 />
+                </div>
                 <div className="gallery__info-wrapper">
                   <p className="gallery__info">{photo.info} </p>
                   <p className="gallery__comments">{photo.comments}</p>

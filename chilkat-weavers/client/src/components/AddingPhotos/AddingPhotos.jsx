@@ -16,6 +16,7 @@ class AddingPhotos extends Component {
       file: event.target.files[0],
     });
   };
+  
   // isFormValid = () => {
   //   // Check if the field is filled
   //   if (
@@ -100,6 +101,7 @@ class AddingPhotos extends Component {
           <button className="add-photo__btn" type="submit">
             submit photo
           </button>
+        <Link to={`/${this.props.match.params.id}/profile`} >Default Photo</Link>
           </div>
         </form>
       </article>

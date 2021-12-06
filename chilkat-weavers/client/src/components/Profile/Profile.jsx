@@ -55,7 +55,7 @@ componentDidMount() {
             <p className="profile__info">Age: <span className="profile__info--span">{this.state.profile.age}</span></p>
             <p className="profile__info">Teacher: <span className="profile__info--span">{this.state.profile.teacher}</span></p>
             <p className="profile__info">Experience: <span className="profile__info--span">{this.state.profile.experience}</span></p>
-            {/* <p className="profile__info"> {this.state.profile.blanket}</p> */}
+            {parseInt(this.state.profile.blanket) ? <p className="profile__info">I have woven a blanket</p> : ""}
              <p className="profile__info">Suppliers: <span className="profile__info--span">{this.state.profile.supply}</span></p>
             <p className="profile__info profile__comments">Comments: <span className="profile__info--span">{this.state.profile.comments}</span></p>
             <h3 className="profile__subtitle">Social Media Links</h3>

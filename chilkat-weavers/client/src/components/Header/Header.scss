@@ -1,94 +1,86 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 .header {
-    &__container {
-        display: flex;
-       
-        flex-direction: column;
-        
-        // align-items: center;
-        background-color: $nav-color;
-        color: $text-color;
-        // height: 10.5rem;
-        border-bottom: 2px solid $yellow;
-        padding: 0.5rem;
-        
-        @include tablet {
-            flex-direction: row-reverse;
-            justify-content: space-between;
-            align-items: center;
-            height: 9.5rem;
-        }
+  &__container {
+    display: flex;
+    flex-direction: column;
+    // align-items: center;
+    background-color: $nav-color;
+    color: $text-color;
+    // height: 10.5rem;
+    border-bottom: 2px solid $yellow;
+    padding: 0.5rem;
+
+    @include tablet {
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      align-items: center;
+      height: 9.5rem;
+      border-bottom: 3px solid $yellow;
+    }
+  }
+  &__direction {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 0.25rem;
+    @include tablet {
+        align-items: flex-start;
 
     }
-    &__direction {
-        display: flex;
-        justify-content:flex-end;
-        padding: 0 0.25rem;
-    } 
-     &__weavers {
-        display: flex;
-        flex-direction: column;
-        padding: 0.25rem 1rem;
-        @include tablet {
-        
-        }
+  }
+  &__weavers {
+    display: flex;
+    flex-direction: column;
+    padding: 0.25rem 1rem;
+    @include tablet {
     }
-    &__logo-wrapper {
-        display: flex;
-     
-        justify-content: end;
-       
-        padding: 0.75rem ;
-        @include tablet {
-          
-        }
+  }
+  &__logo-wrapper {
+    display: flex;
+    justify-content: end;
+    padding: 0.75rem;
+    @include tablet {
     }
-  
-    
-    &__logo {
+  }
+
+  &__logo {
     //    margin: 1rem 0 0 1rem;
-        width: 3.5rem;
-        height: 3.5rem;
-        border-radius: 15px;
-      
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 15px;
+  }
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 1.5rem 0.5rem 0.25rem 0.5rem;
+    @include tablet {
+      flex-direction: column;
+      align-items: center;
+      padding: 0 1rem;
     }
-    &__wrapper {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        padding: 1.5rem 0.5rem 0.25rem 0.5rem;
-        @include tablet {
-            flex-direction: column;
-            align-items: center;
-            padding: 0 1rem;
-        }
-    }
+  }
 
-  
-  
-    &__link {
-        font-weight: 500;
-        font-size: 20px;
-        text-decoration: none;
-        color: $text-color;
-        padding: 0.5rem;
-    }
+  &__link {
+    font-weight: 500;
+    font-size: 20px;
+    text-decoration: none;
+    color: $text-color;
+    padding: 0.5rem;
+  }
 
-    &__btn {
-        background-color: $text-color;
-        color: $nav-color;
-        border: none;
-        border-radius: 15px;
-        padding: 0.25rem;
-        width: 5.5rem;
-        
-        font-weight: 600;
-        @include tablet {
-           
-            // padding: 1.5rem;
-            // margin: 2.5rem 1.5rem;
-        }
-    }
+  &__btn {
+    background-color: $text-color;
+    color: $nav-color;
+    border: none;
+    border-radius: 15px;
+    padding: 0.25rem;
+    width: 5.5rem;
 
+    font-weight: 600;
+    @include tablet {
+      // padding: 1.5rem;
+      // margin: 2.5rem 1.5rem;
+    }
+  }
 }
