@@ -1,4 +1,6 @@
 import axios from "axios";
+
+
 import "./Gallery.scss";
 import { Component } from "react";
 
@@ -15,6 +17,7 @@ class Gallery extends Component {
     axios
       .get(`http://localhost:8082/images`)
       .then((response) => {
+          console.log(response.data);
         this.setState({
           photos: response.data,
           activeWeaver: response.data[0],
@@ -24,6 +27,7 @@ class Gallery extends Component {
   };
 
   render() {
+      
     return (
       <article className="gallery">
         <h2 className="gallery__title"></h2>
@@ -41,6 +45,10 @@ class Gallery extends Component {
                 <div className="gallery__info-wrapper">
                   <p className="gallery__info">{photo.info} </p>
                   <p className="gallery__comments">{photo.comments}</p>
+                </div>
+                <div className="gallery_carousel">
+                    
+
                 </div>
               </li>
             );

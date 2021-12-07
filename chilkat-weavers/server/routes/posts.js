@@ -17,20 +17,23 @@ router.get('/', (req, res) => {
 
 //get post by id
 router.get('/:id', (req, res) => {
-  knex('posts')
-    .where({ id: req.params.id })
+  knex('weavers')
+  .join('images', 'images.weavers_id', 'weavers.id')
+    .where({weavers_id: req.params.id })
     .then((data) => {
+      console.log(data);
       if (!data.length) {
         res.status(404).json({
-          message: `Post not found with the id ${req.params.id}`,
+          message: `Image not found with the id ${req.params.id}`,
         });
       } else {
-        res.status(200).json(data[0]);
+        res.status(200).json(data);
+        
       }
     })
     .catch(() => {
       res.status(400).json({
-        message: `Error getting post ${req.params.id}`,
+        message: `Error getting images ${req.params.id}`,
       });
     });
 });

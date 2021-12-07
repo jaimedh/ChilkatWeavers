@@ -18,7 +18,7 @@ exports.up = function (knex) {
       table.string("age");
       table.string("teacher");
       table.string("experience");
-      table.boolean("blanket");
+      table.string("blanket");
       table.string("supply");
       table.string("comments");
       table.string("website");
@@ -47,5 +47,5 @@ exports.up = function (knex) {
 };
 
 exports.down = function (knex) {
-  return knex.schema.dropTable("usersinfo").dropTable("users");
+  return knex.schema.dropTable("usersinfo").dropTable("users").dropTable("landingphotos");
 };

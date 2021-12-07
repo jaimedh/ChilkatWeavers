@@ -272,7 +272,7 @@ isFormValid = () => {
             /> 
           </label>
           <div className="signup__btnwrapper">
-              <Link to="/" className="signup__link">
+              <Link to={`/${this.props.match.params.id}/profile`} className="signup__link">
                 <button className="signup__btn">Cancel</button>
               </Link>
               <button

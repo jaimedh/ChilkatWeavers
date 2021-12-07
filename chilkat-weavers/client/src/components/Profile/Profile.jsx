@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Component } from "react";
+import { Link } from "react-router-dom";
 import "./Profile.scss";
 import FB from "../../assets/icons/Icon-facebook.svg";
 import Insta from "../../assets/icons/Icon-instagram.svg";
@@ -63,9 +64,12 @@ componentDidMount() {
             
             <a className="profile__link"href={this.state.profile.fb} target="_blank" rel="noreferrer"><img className="profile__icon" src={FB} alt= "facebook logo"/></a>
             <a className="profile__link" href={this.state.profile.instagram} target="_blank" ><img className="profile__icon" src={Insta} alt= "Instagram logo"/></a> 
+               <Link className="profile__edit"to={`/${this.props.match.params.id}/edit`}>Edit</Link>
             </div>
-    </div>       
 
+    </div>   
+
+ 
         </article>
     )
   }
