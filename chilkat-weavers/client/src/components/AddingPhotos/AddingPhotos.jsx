@@ -101,8 +101,9 @@ class AddingPhotos extends Component {
           <button className="add-photo__btn" type="submit">
             submit photo
           </button>
-        <Link to={`/${this.props.match.params.id}/profile`} >Default Photo</Link>
+        
           </div>
+        <Link className="add-photo__link"to={`/${this.props.match.params.id}/profile`} >Skip</Link>  
         </form>
       </article>
     );

@@ -1,6 +1,7 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 .gallery {
+width:100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,21 +38,25 @@
     width: 80%;
     height: 25%;
     @include tablet {
-        width: 20rem;
-        margin: 1.5rem;
+        width: 22rem;
+        // height: 35rem;
+        object-fit: cover;
     }
   }
 
   &__info-wrapper {
     display: flex;
     flex-direction: column;
-    padding-bottom: 1rem ;
+    padding-bottom: 0.5rem ;
     width: 80%;
     margin: 0 auto;
+    //  border-bottom: 1px solid $nav-color;
      @include tablet {
           font-size: 24px;
-    //       border: 2px solid $nav-color;
-    //       border-radius: 15px;
+ 
+          height: 15rem;
+        justify-content: center;
+          border-radius: 15px;
        }
   }
   &__info {
@@ -60,13 +65,37 @@
       
   }
   &__comments {
-      padding: 0.5rem 0.5rem 1rem;
-      border-bottom: 1px solid $nav-color;
+    //   padding: 0.5rem 0.5rem 1rem;
+     
       @include tablet {
           border-bottom: none;
+          padding-top: 1rem;
+          
       }
+}
+      &__contact {
+          font-size: 16px;
+      }
+ 
+ 
+  &__social-wrapper {
+      display: flex;
+      justify-content: flex-end;
+      width: 90%;
+    //   padding: 1rem;
+     
   }
-
+  &__icon-wrapper {
+      height: 30px;
+      width: 40px;
+    //   padding: 1rem;
+        background-color: $nav-color; 
+  }
+  &__icon {
+   margin: 0.5rem;
+      height: 25px;
+      width: 25px;
+  }
 
 
 }

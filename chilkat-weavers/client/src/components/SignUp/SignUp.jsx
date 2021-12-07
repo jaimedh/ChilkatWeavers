@@ -30,12 +30,6 @@ class SignUp extends Component {
     });
   };
 
-  // handleImageChange = (event) => {
-  //   console.log("image", event.target.files[0]);
-  //   this.setState({
-  //     file: event.target.files[0],
-  //   });
-  // };
 
   isFormValid = () => {
     // Check if the field is filled
@@ -47,27 +41,7 @@ class SignUp extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    // const formData = new FormData();
-    // formData.append("profile_img", this.state.file);
-
-    // const reader = new FileReader();
-    // const url = reader.readAsDataURL(this.state.file);
-    // reader.onloadend = (event) => {
-    //   this.setState({
-    //     imgSrc: [reader.result],
-    //   });
-    // };
-
-    // for (let value of formData.values()) {
-    //   console.log(value);
-    // }
-    // const config = {
-    //   headers: {
-    //     "content-type": "multipart/form-data",
-    //   },
-    // };
-
-    // console.log(formData);
+  
     const newSignup = {
       name: this.state.name,
       community: this.state.community,
@@ -83,10 +57,7 @@ class SignUp extends Component {
       fb: this.state.fb,
       instagram: this.state.instagram,
     };
-    // console.log(newSignup);
 
-    // const data ={objects: [formData, newSignup]};
-    // console.log(data);
 
     if (this.isFormValid()) {
       axios
@@ -97,7 +68,6 @@ class SignUp extends Component {
           });
           alert("successful upload");
           console.log(response.data);
-          //history api push
           this.props.history.push(`/${response.data.id}/addphotos`);
         })
 
@@ -120,15 +90,6 @@ class SignUp extends Component {
           className="signup__form"
         >
           <h2 className="signup__subtitle">Details</h2>
-          {/* <label className="signup__label">
-            <h3>Upload Profile Picture</h3>
-            <img src={this.state.imgSrc} alt="uploaded file" />
-            <input
-              type="file"
-              name="profile_img"
-              onChange={this.handleImageChange}
-            />
-          </label> */}
 
           <label className="signup__label">
             <h3>Name</h3>

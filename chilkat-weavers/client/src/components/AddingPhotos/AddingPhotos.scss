@@ -1,47 +1,67 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
-.add-photo{
+.add-photo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__title {
+    text-align: center;
+    font-size: 24px;
+    margin: 1rem;
+  }
+  &__form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    &__title {
-        text-align: center;
-        font-size: 24px;
-        margin: 1rem;
+  }
+  &__label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__img {
+    width: 40%;
+    border-radius: 15px;
+    margin-bottom: 1rem;
+    @include tablet {
+      width: 45%;
     }
-    &__form {
-         display: flex;
-        flex-direction: column;
-        align-items: center;
+  }
 
+  &__input {
+    padding-left: 4rem;
+  }
+  &__btn-wrapper {
+    width: 100%;
+    align-self: center;
+  }
+  &__btn {
+    background-color: $nav-color;
+    color: $text-color;
+    border: none;
+    border-radius: 15px;
+    padding: 1rem;
+    width: 10rem;
+    font-weight: 600;
+    margin: 1rem;
+    @include tablet {
+      font-size: 18px;
     }
-    &__label {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-       
+  }
+  &__link {
+    padding: 0.5rem;
+    text-decoration: none;
+    color: $black;
+    font-weight: 600;
+    font-size: 24;
+    @include tablet {
+      font-size: 28px;
     }
-    &__img {
-        width: 40%;
-        border-radius: 15px;
-        margin-bottom: 1rem;
+    &:hover {
+      color: $yellow;
+      font-weight: 600;
+      background-color: $color;
+      border-radius: 15px;
     }
-
-    &__input {
-        padding-left: 4rem;
-    }
-    &__btn-wrapper {
-        width: 100%;
-        align-self: center;
-    }
-    &__btn {
-        background-color: $nav-color;
-        color: $text-color;
-        border: none;
-        border-radius: 15px;
-        padding: 1rem;
-        width: 10rem;
-        font-weight: 600;
-        margin: 1rem;
-    }
+  }
 }

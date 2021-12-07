@@ -36,6 +36,7 @@
 
     &__img-container {
         display: flex;
+        height:320px;
         justify-content: center;
         padding-top: 1rem;
     }
@@ -43,7 +44,8 @@
     &__img {
         border-radius: 15px;
         width: 80%;
-        height: 25%;  
+        object-fit: cover;
+        // height: 25%;  
     }
 
     &__container {
