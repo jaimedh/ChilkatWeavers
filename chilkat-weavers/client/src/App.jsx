@@ -7,6 +7,7 @@ import EditProfile from "./components/EditProfile/EditProfile";
 import AddingPhotos from "./components/AddingPhotos/AddingPhotos";
 import Profile from "./components/Profile/Profile";
 import Weavers from "./components/Weavers/Weavers";
+import Footer from "./components/Footer/Footer";
 function App() {
   return (
     <Router>
@@ -55,6 +56,7 @@ function App() {
           />
           
         </Switch>
+        <Footer />
       </div>
     </Router>
   );

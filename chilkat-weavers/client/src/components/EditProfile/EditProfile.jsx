@@ -16,6 +16,7 @@ class EditProfile extends Component {
     experience: "",
     blanket: "",
     supply: "",
+    comments: "",
     fb: "",
     instagram: "",
   };
@@ -33,13 +34,15 @@ class EditProfile extends Component {
           name: response.data[0].name,
           community: response.data[0].community,
           nation: response.data[0].nation,
-          location: response.data[0].location,
+          
           crest: response.data[0].crest,
+          location: response.data[0].location,
           age: response.data[0].age,
           teacher: response.data[0].teacher,
           experience: response.data[0].experience,
           blanket: response.data[0].blanket,
           supply: response.data[0].supply,
+          comments: response.data[0].comments,
           fb: response.data[0].fb,
           instagram: response.data[0].instagram,
         });
@@ -72,14 +75,17 @@ class EditProfile extends Component {
     const editProfile = {
       name: this.state.name,
       community: this.state.community,
-      nation: this.state.nation,
-      location: this.state.location,
+      nation: this.state.nation,      
       crest: this.state.crest,
+      location: this.state.location,
       age: this.state.age,
       teacher: this.state.teacher,
       experience: this.state.experience,
       blanket: this.state.blanket,
       supply: this.state.supply,
+      comments: this.state.comments,
+      fb: this.state.fb,
+      instagram: this.state.instagram,
     };
 
     if (this.isFormValid()) {
@@ -160,6 +166,17 @@ class EditProfile extends Component {
               onChange={this.handleChange}
               value={this.state.crest}
             />
+               <label className="signup__label">
+            <h3 className="signup__input-title">Location</h3>
+            <input
+              className="signup__input"
+              type="text"
+              name="location"
+              onChange={this.handleChange}
+              value={this.state.location}
+            />
+          </label>
+
           </label>
           <label className="signup__label">
             <h3>Age</h3>
@@ -197,19 +214,17 @@ class EditProfile extends Component {
               <option value="Master">Master</option>
             </select>
           </label>
-          <label className="signup__label">
-            <h3>
-              {" "}
+          <label className="signup__label signup__blanket">         
+            <h3 className="signup__blanket-title">
               I have woven a full sized 56" or wider Chilkat dancing blanket"
-            </h3>
+            </h3>          
             <input
-              className="signup__input"
-              type="radio"
+              className="signup__check"
+              type="checkbox"
               name="blanket"
-              onChange={this.handleCheckboxChange}
               value={this.state.blanket}
+              onChange={this.handleCheckboxChange}
             />
-            Yes
           </label>
 
           <label className="signup__label">
@@ -222,6 +237,19 @@ class EditProfile extends Component {
               value={this.state.supply}
             />
           </label>
+          <label className="signup__label">
+            <h3 className="signup__input-title">Comments</h3>
+            <textarea
+              className="signup__input signup__text"
+              type="text"
+              name="comments"
+              value={this.state.comments}
+              onChange={this.handleChange}
+           
+            />
+          </label>
+
+
           <h3>Social Media</h3>
           <label className="signup__label">
             <h4>Facebook</h4>
@@ -231,7 +259,7 @@ class EditProfile extends Component {
               name="facebook"
               value={this.state.fb}
               onChange={this.handleChange}
-              placeholder="your facebook link"
+              
             />
           </label>
           <label className="signup__label">

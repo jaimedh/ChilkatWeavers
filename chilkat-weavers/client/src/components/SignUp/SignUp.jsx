@@ -92,7 +92,7 @@ class SignUp extends Component {
           <h2 className="signup__subtitle">Details</h2>
 
           <label className="signup__label">
-            <h3>Name</h3>
+            <h3 className="signup__input-title">Name</h3>
             <input
               className="signup__input"
               type="text"
@@ -103,7 +103,7 @@ class SignUp extends Component {
             />
           </label>
           <label className="signup__label">
-            <h3>Community</h3>
+            <h3 className="signup__input-title">Community</h3>
             <input
               className="signup__input"
               type="text"
@@ -115,7 +115,7 @@ class SignUp extends Component {
           </label>
 
           <label className="signup__label">
-            <h3>Nation</h3>
+            <h3 className="signup__input-title">Nation</h3>
             <input
               className="signup__input"
               type="text"
@@ -126,7 +126,7 @@ class SignUp extends Component {
             />
           </label>
           <label className="signup__label">
-            <h3>Crest</h3>
+            <h3 className="signup__input-title">Crest</h3>
             <input
               className="signup__input"
               type="text"
@@ -137,7 +137,7 @@ class SignUp extends Component {
             />
           </label>
           <label className="signup__label">
-            <h3>Location</h3>
+            <h3 className="signup__input-title">Location</h3>
             <input
               className="signup__input"
               type="text"
@@ -149,18 +149,18 @@ class SignUp extends Component {
           </label>
 
           <label className="signup__label">
-            <h3>Age</h3>
+            <h3 className="signup__input-title">Age</h3>
             <input
               className="signup__input"
               type="text"
               name="age"
               onChange={this.handleChange}
               value={this.state.age}
-              placeholder="age range"
+              placeholder="Age range"
             />
           </label>
           <label className="signup__label">
-            <h3>Teachers or Mentors</h3>
+            <h3 className="signup__input-title">Teachers or Mentors</h3>
             <input
               className="signup__input"
               type="text"
@@ -171,7 +171,7 @@ class SignUp extends Component {
             />
           </label>
           <label className="signup__label">
-            <h3>Experience</h3>
+            <h3 className="signup__input-title">Experience</h3>
             <select
               className="signup__input"
               onChange={this.handleChange}
@@ -186,12 +186,14 @@ class SignUp extends Component {
               <option value="Master">Master</option>
             </select>
           </label>
-          <label className="signup__label">
-            <h3>
+          <label className="signup__label signup__blanket">
+          
+            <h3 className="signup__blanket-title">
               I have woven a full sized 56" or wider Chilkat dancing blanket"
             </h3>
+           
             <input
-              className="signup__input"
+              className="signup__check"
               type="checkbox"
               name="blanket"
               value={this.state.blanket}
@@ -200,30 +202,30 @@ class SignUp extends Component {
           </label>
 
           <label className="signup__label">
-            <h3>Supply Sources</h3>
+            <h3 className="signup__input-title">Supply Sources</h3>
             <textarea
-              className="signup__input"
+              className="signup__input signup__text"
               type="text"
               name="supply"
               value={this.state.supply}
               onChange={this.handleChange}
-              placeholder="where do you get your supplies?"
+              placeholder="Where do you get your supplies?"
             />
           </label>
           <label className="signup__label">
-            <h3>Comments</h3>
+            <h3 className="signup__input-title">Comments</h3>
             <textarea
-              className="signup__input"
+              className="signup__input signup__text"
               type="text"
               name="comments"
               value={this.state.comments}
               onChange={this.handleChange}
-              placeholder="what inspires you?"
+              placeholder="What inspires you?"
             />
           </label>
-          <h3>Social Media</h3>
+          <h3 className="signup__input-title">Social Media</h3>
           <label className="signup__label">
-            <h4>Facebook</h4>
+            <h3 className="signup__input-title">Facebook</h3>
             <input
               className="signup__input"
               type="text"
@@ -234,7 +236,7 @@ class SignUp extends Component {
             />
           </label>
           <label className="signup__label">
-            <h4>Instagram</h4>
+            <h3 className="signup__input-title">Instagram</h3>
             <input
               className="signup__input"
               type="text"

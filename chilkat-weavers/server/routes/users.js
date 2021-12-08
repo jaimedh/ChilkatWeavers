@@ -118,6 +118,7 @@ router.post("/",  (request, respond) => {
     experience: request.body.experience,
     blanket: request.body.blanket,
     supply: request.body.supply,
+    comments: request.body.comments,
     fb: request.body.fb,
     instagram: request.body.instagram,
   };
@@ -181,6 +182,7 @@ router.put("/:id", (request, respond) => {
     experience: request.body.experience,
     blanket: request.body.blanket,
     supply: request.body.supply,
+    comments: request.body.comments,
     fb: request.body.fb,
     instagram: request.body.instagram
   }
@@ -193,11 +195,11 @@ router.put("/:id", (request, respond) => {
       userId = data[0];
       usersMoreData.users_id = data[0];
       return knex("usersinfo")
-        .where({ id: request.params.id })
+        .where({ users_id: request.params.id })
         .update(usersMoreData);
     })
     .then((data) => {
-      console.log(data);
+      console.log("update data",data);
       respond.status(200).json({
         id:userId,
         message: `User ${request.body.name} created successfully with the id ${data}`,

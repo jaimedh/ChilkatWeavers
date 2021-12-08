@@ -83,6 +83,7 @@ class Gallery extends Component {
             );
           })}
         </ul>
+        <p className="gallery__notes">Thank you to everyone who contributed to this site.</p>
       </article>
     );
   }
