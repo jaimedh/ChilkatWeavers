@@ -1,7 +1,7 @@
-import { Componet } from 'react';
+import { Component } from 'react';
 import axios from 'axios';
 
-class Login extends Copmonent {
+class Login extends Component {
     state = {
         loggedIn: false,
         profileData: null,

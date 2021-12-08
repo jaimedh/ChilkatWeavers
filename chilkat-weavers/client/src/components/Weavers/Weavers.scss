@@ -1,5 +1,6 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
+
 .weavers {
     // display: flex;
     // flex-direction: column;
@@ -12,9 +13,7 @@
     &__list {
         display: flex;
     flex-direction: column;
-    max-width: 80rem;
-    // width: 100%;
-   
+    max-width: 80rem;   
     align-items: center;
         
         @include tablet {
@@ -56,6 +55,9 @@
         width: 80%;
         padding: 0.5rem 2rem;
         margin: 1rem 2rem 0 2rem;
+        @include desktop {
+            height: 21.25rem;
+        }
     }
     &__name {
         font-size: 22px;
