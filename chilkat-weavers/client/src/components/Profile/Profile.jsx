@@ -16,8 +16,9 @@ class Profile extends Component {
     getProfilebyId = (id) => {
         console.log('id', id);
         axios
-        .get(`http://localhost:8082/users/${id}`
-        )
+        // .get(`http://localhost:8082/users/${id}`)
+        .get(`http://localhost:8082/auth/profile`, { withCredentials: true })
+       
     
     .then((response) => {
         console.log(response.data[0]);
@@ -32,7 +33,7 @@ class Profile extends Component {
 };
 componentDidMount() {
     const {id}=this.props.match.params;
-    this.getProfilebyId(id);
+    this.getProfilebyId();
    
 }
 

@@ -53,16 +53,16 @@ const usersInfo = [
 
   const landingphotos = [
     {
-      id:111,
-      file: "/gallery/dancing.JPG",
-      info:"Lily Hope, photographed by, @SydneyAkagiPhoto",
-      comments:"",
+      id:0111,
+      file: "/gallery/rachel.JPG",
+      info:"Weaver Rachel Hunt",
+      comments:"“Everything is interwoven… weave with intention, and in good spirits.”",
     },
     {
-      id:112,
-      file: "/gallery/maskonbranch.JPG",
-      info:"Lily Hope, photographed by, @SydneyAkagiPhoto",
-      comments:"",
+      id:0112,
+      file: "/gallery/charlene.JPG",
+      info:"Weaver Charlene Baker",
+      comments:"“Weaving is so relaxing.  My ancestors prepared me when I was a child by putting a robe on me.  I am lucky to weave”",
     }
   ]
   

@@ -11,14 +11,13 @@
     color: $nav-color;
     font-size: 14px;
     @include tablet {
-        align-items: flex-start;
-
+        align-items: flex-end;
         padding-left: 4rem;
         font-size: 16px;
     }
 
     &__container {
-        width: 40%;
+        width: 22%;
     }
     &__info-wrapper {
         padding: 0.75rem 0;

@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.scss";
 import Header from "./components/Header/Header";
+import Login from "./components/Login/Login";
 import HomePage from "./pages/HomePage/HomePage";
 import SignUp from "./components/SignUp/SignUp";
 import EditProfile from "./components/EditProfile/EditProfile";
@@ -13,6 +14,7 @@ function App() {
     <Router>
       <div className="App">
         <Header />
+        <Login />
         <Switch>
           <Route
             path="/"
@@ -41,12 +43,12 @@ function App() {
               <EditProfile {...routerProps} />
             )}
           />
-          <Route
+          {/* <Route
             path="/:id/profile"
             render={(routerProps) => (
               <Profile {...routerProps} />
             )}
-          />
+          /> */}
            <Route
             path="/weavers"
             exact

@@ -5,9 +5,12 @@ exports.up = function (knex) {
     return knex.schema
     .createTable("weavers", (table) => {
         table.increments("id"); //landingphotos id
-        table.string("file");
+        table.string("links");
         table.string("info");
         table.string("comments");
+        table.string("website");
+        table.string("instagram");
+        table.string("facebook");
         table.timestamp("updated_at").defaultTo(knex.fn.now());        
       })
       .createTable("images", (table) => {

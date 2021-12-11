@@ -26,25 +26,25 @@ class EditProfile extends Component {
 
   getProfilebyId = () => {
     axios
-      .get(`http://localhost:8082/users/${this.props.match.params.id}`)
-
+      // .get(`http://localhost:8082/users/${this.props.match.params.id}`)
+      .get(`http://localhost:8082/auth/profile`, { withCredentials: true })
       .then((response) => {
-        console.log(response.data[0]);
+        console.log(response.data);
         this.setState({
-          name: response.data[0].name,
-          community: response.data[0].community,
-          nation: response.data[0].nation,
+          name: response.data.name,
+          community: response.data.community,
+          nation: response.data.nation,
           
-          crest: response.data[0].crest,
-          location: response.data[0].location,
-          age: response.data[0].age,
-          teacher: response.data[0].teacher,
-          experience: response.data[0].experience,
-          blanket: response.data[0].blanket,
-          supply: response.data[0].supply,
-          comments: response.data[0].comments,
-          fb: response.data[0].fb,
-          instagram: response.data[0].instagram,
+          crest: response.data.crest,
+          location: response.data.location,
+          age: response.data.age,
+          teacher: response.data.teacher,
+          experience: response.data.experience,
+          blanket: response.data.blanket,
+          supply: response.data.supply,
+          comments: response.data.comments,
+          fb: response.data.fb,
+          instagram: response.data.instagram,
         });
       })
       .catch((error) => console.log(error));

@@ -10,6 +10,7 @@ exports.up = function (knex) {
       table.string("nation");
       table.string("crest");
       table.timestamp("updated_at").defaultTo(knex.fn.now());
+      table.string("google_id").notNullable();
     })
     .createTable("usersinfo", (table) => {
       table.increments("id"); //usersinfo primary key

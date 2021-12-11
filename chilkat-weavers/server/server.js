@@ -10,7 +10,7 @@ const cors = require('cors');
 const knex =  require('knex')(require('./knexfile').development) ;
 const PORT = process.env.PORT || 8082;
 
-app.use(cors());
+app.use(cors({origin:true, credentials:true}));
 app.use(session({
     secret: "secret",
     resave: false ,
@@ -23,28 +23,33 @@ app.use(passport.session())    //allow passport to use "express-session"
 //Get the GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET from Google Developer Console
 const GOOGLE_CLIENT_ID = ""
 const GOOGLE_CLIENT_SECRET = ""
-const authUser = (request, accessToken, refreshToken, profile, done) => {
-  console.log(profile)
+
+const authUser = (request, _accessToken, _refreshToken, profile, done) => {
+  console.log("line 27 profile",profile)
   done(null, profile)
 
   knex('users')
-  .where({ google_id: profile.id })
+   .select('google_id')
+  // .join("usersinfo", "usersinfo.users_id", "users.id") // join users table
+  // .where({ google_id: profile.id })
   .then((response) => {
+    console.log('line 35 response', response);
+     console.log("profile.id",profile.id);
     if (!response.length) {
-      console.log('user not found');
-      console.log(profile.id);
+      console.log('line 38 user not found');
+     
       knex('users')
         .insert({
           google_id: profile.id,
           name: profile.displayName,
         })
-        .then((response) => {
-          console.log('user created', response);
-          req.session.user = response.shift();
+        .then((req, response) => {
+          console.log('line 44 user created', response);
+          // req.session.user = response.shift();
         })
         .catch((err) => console.log(err));
     } else {
-      console.log('user found', response);
+      console.log('line 49 user found', response);
       done(null, response.shift());
     }
   })
@@ -59,25 +64,26 @@ passport.use
     clientID:     GOOGLE_CLIENT_ID,
     clientSecret: GOOGLE_CLIENT_SECRET,
     callbackURL: "http://localhost:8082/auth/callback",
-    passReqToCallback   : true
+    passReqToCallback: true
   }, authUser));
 
 
 passport.serializeUser( (user, done) => { 
-    console.log(`\n--------> Serialize User:`)
-    console.log(user.id)
+    // console.log(`\n--------> Serialize User:`)
+    // console.log(user.id)
+
      // The USER object is the "authenticated user" from the done() in authUser function.
      // serializeUser() will attach this user to "req.session.passport.user.{user}", so that it is tied to the session object for each session.  
 
-    done(null, user.id)
+    done(null, user)
 } )
 
 
-passport.deserializeUser((id, done) => {
-        console.log("\n--------- Deserialized User:")
-        console.log(id)
+passport.deserializeUser((user, done) => {
+        // console.log("\n--------- Deserialized User:")
+        // console.log(user)
         knex('users')
-      .where({ id })
+      .where({ google_id:user.id })
       .then((user) => {
         done(null, user);
       });
@@ -100,12 +106,22 @@ app.get('/auth/callback',
     // Successful authentication, redirect home.
     res.redirect('http://localhost:3000');
   });
-app.get('/profile', (req, res) => {
+app.get('/auth/profile', (req, res) => {
+  console.log('line 107', req.user)
   if (req.user) {
-    res.json(req.user)
+    res.json(req.user.shift())
   }
+  // 
   else res.send('user not found');
 })
+// logout, ends session
+app.get('/auth/logout', (req, res) => {
+  req.logOut();
+  req.session.destroy((err) => {
+    res.redirect(req.headers.referer);
+  });
+});
+
 app.use('/users', usersRoutes);
 app.use('/images', photosRoutes);
 app.use('/posts', postRoutes);
