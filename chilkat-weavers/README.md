@@ -38,7 +38,7 @@ www.linkedin.com/in/jaime-hunt
 ![Landing Page](./server/public/readme/LandingPage.png),
 ![Landing Page](./server/public/readme/LandingPageMap.png),
 ![Landing Page](./server/public/readme/LandingPageMap.png),
-![Landing Page](./server/public/readme/LandingPageMobile.png,
+![Landing Page](./server/public/readme/LandingPageMobile.png),
 
 ![Form Page](./server/public/readme/LandingPage.JPG),
 ![Form Page](./server/public/readme/PhotoUpload.JPG)
