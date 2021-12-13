@@ -1,0 +1,91 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+.profile {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: $nav-color;
+  color: $text-color;
+  padding-top: 1rem;
+  align-items: center;
+  
+  @include desktop {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-around;
+      margin: 0 auto;
+      padding: 3rem;
+    }
+
+  &__container {
+    display: flex;
+    width: 80%;
+    // padding-top: 1rem;
+      @include tablet {
+      width: 60%;
+    }
+     @include desktop {
+      width: 45%;
+    }
+  }
+  &__img {
+    border-radius: 15px;
+    width: 100%;
+    height: 30%;
+  
+   
+  }
+
+  &__info-wrapper {
+    display: flex;
+    flex-direction: column;
+    // padding: 0.5rem 2rem;
+    width: 80%;
+    @include tablet {
+        padding: 2rem 5rem;
+        font-size: 24px;
+    }
+    @include desktop {
+      width: 45%;
+    } 
+  }
+  &__name {
+    font-size: 22px;
+    padding: 0.5rem;
+    @include tablet {
+        font-size: 26px;
+    }
+  }
+  &__nation {
+    padding: 0.25rem 0.5rem;
+  }
+  &__info {
+    padding: 0.25rem 0.5rem;
+    &--span {
+      font-weight: 600;
+    }
+  }
+
+  &__subtitle {
+    padding: 0.25rem 0.5rem;
+  }
+
+  &__social-container {
+    padding: 0.5rem;
+    display: flex;
+    // justify-content: center;
+  }
+  &__link {
+    padding: 0.5rem;
+  }
+  &__edit {
+    padding: 0.5rem;
+    text-decoration: none;
+    color: $yellow;
+    &:hover {
+      font-weight: 600;
+      background-color: $color;
+      border-radius: 15px;
+    }
+  }
+}

@@ -1,0 +1,39 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $nav-color;
+  color: $text-color;
+
+  &__image {
+    width: 100%;
+    height: 30%;
+    background-image: url("../../assets/images/Lilyweaving.JPG");
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    height: 22rem;
+    margin: 0 auto;
+    @include tablet {
+      width: 100%;
+      height: 40rem;
+      margin: 0;
+    }
+  }
+  &__title {
+      padding: 1rem;
+      @include tablet{
+          padding: 2rem;
+          font-size: 32px;
+      }
+  }
+  &__text-wrapper {
+      padding: 0 1rem;
+  }
+  a.hero__link {
+    text-decoration: none;
+    color: $text-color;
+  }
+}
