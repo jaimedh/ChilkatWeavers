@@ -35,20 +35,28 @@ www.linkedin.com/in/jaime-hunt
 ## Screenshots
 
 
-![Landing Page](./server/public/readme/LandingPage.png),
+![Landing Page](./server/public/readme/LandingPage.png)
+
 Landing page header and hero.
-![Landing Page](./server/public/readme/LandingPageMap.png),
+
+![Landing Page](./server/public/readme/LandingPageMap.png)
+
 A map from native-land api.
 
-![Landing Page](./server/public/readme/LandingPageMobile.png),
-  Photos and quotes from current weavers.
+![Landing Page](./server/public/readme/LandingPageMobile.png)
 
-![Form Page](./server/public/readme/form-mobile.png),
+Photos and quotes from current weavers.
+
+![Form Page](./server/public/readme/form-mobile.png)
+
 A responsive site for mobile, tablet, and desktop. Signup form with some form validation as I wanted to leave it optional what is shared.
+
 ![Form Page](./server/public/readme/PhotoUpload.png)
+
 Image upload using multer.  Saves photo path in the database and photo to public folder on the server.
 
-![Current Weavers Page](./server/public/readme/CurrentWeavers.png),
+![Current Weavers Page](./server/public/readme/CurrentWeavers.png)
+
 Cards of all the weavers who have signed up.
 
 
