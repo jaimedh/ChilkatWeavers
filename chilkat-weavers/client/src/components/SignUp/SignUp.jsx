@@ -67,7 +67,6 @@ class SignUp extends Component {
             users: response.data,
           });
           alert("successful upload");
-          console.log(response.data);
           this.props.history.push(`/${response.data.id}/addphotos`);
         })
 

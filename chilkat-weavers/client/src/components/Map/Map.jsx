@@ -32,7 +32,7 @@ class Map extends Component {
         </h3>
 
         <iframe
-          className="map__iframe"
+          className="map__iframe" title="territory map"
           src="https://native-land.ca/api/embed/embed.html?maps=territories&name=tsimshian,kwakwakawakw,tlingit,haida"
         ></iframe>
         <Link to="https://native-land.ca/" className="map__link">

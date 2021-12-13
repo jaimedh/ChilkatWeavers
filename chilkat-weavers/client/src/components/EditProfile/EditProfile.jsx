@@ -8,8 +8,8 @@ class EditProfile extends Component {
     name: "",
     community: "",
     nation: "",
-    location: "",
     crest: "",
+    location: "", 
     age: "",
     teacher: "",
     experience: "",
@@ -30,12 +30,10 @@ class EditProfile extends Component {
       .get(`http://localhost:8082/users/${id}`)
 
       .then((response) => {
-        console.log(response.data[0]);
         this.setState({
           name: response.data[0].name,
           community: response.data[0].community,
-          nation: response.data[0].nation,
-          
+          nation: response.data[0].nation,         
           crest: response.data[0].crest,
           location: response.data[0].location,
           age: response.data[0].age,
@@ -146,16 +144,6 @@ class EditProfile extends Component {
               name="nation"
               onChange={this.handleChange}
               value={this.state.nation}
-            />
-          </label>
-          <label className="signup__label">
-            <h3>Location</h3>
-            <input
-              className="signup__input"
-              type="text"
-              name="location"
-              onChange={this.handleChange}
-              value={this.state.location}
             />
           </label>
           <label className="signup__label">
