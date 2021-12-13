@@ -1,7 +1,11 @@
 
 # Today's Chilkat Weavers
 
-A web app to showcase current Chilkat Weavers.  A platform for weavers to sign up, share who they are and the weavings that they do.  This app is intended to work towards Cultural Revitalization by highlighting Indigenous voices, their culture and stories.  Chilkat weavers are still current and valued today. 
+A web app to showcase current Chilkat Weavers.  A platform for weavers to sign up, share who they are and the weavings that they do.  This app is intended to work towards Cultural Revitalization by highlighting Indigenous voices, their culture and stories.  Chilkat weavers are still current and valued today. The content was thoughtfully designed after interviewing several weavers to find out their needs.
+
+Full Stack Responsive Web App. 
+Client side built with React and sass.  Fully responsive.
+Server has a mySQL database with mutilple tables that join, with purpose to be scalable once launched.  Used multer so users can upload photos. Profiles can be edited.
 
 ## Acknowledgements
 
@@ -15,6 +19,7 @@ In terminal cd to ChilkatWeavers client:
 $ npm start
 
 In another terminal window cd to ChilkatWeavers server:
+Using Mysql and knex,
 $ npm run migrate
 
 $ npm run seed
