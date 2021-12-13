@@ -1,8 +1,6 @@
 import "./Hero.scss";
 
 
-// import { Link } from "react-router-dom";
-
 function Hero() {
   return (
     <article className="hero">

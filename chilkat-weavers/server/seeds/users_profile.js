@@ -9,7 +9,7 @@ const usersData = [
   },
   {
     id: 2,
-    file: "photo2",
+    file: "photo/logo.svg",
     name: "Cara",
     community: "Lax KwAlaams",
     nation: "Tsimshian",   
@@ -51,21 +51,6 @@ const usersInfo = [
   },
 ]
 
-  const landingphotos = [
-    {
-      id:0111,
-      file: "/gallery/rachel.JPG",
-      info:"Weaver Rachel Hunt",
-      comments:"“Everything is interwoven… weave with intention, and in good spirits.”",
-    },
-    {
-      id:0112,
-      file: "/gallery/charlene.JPG",
-      info:"Weaver Charlene Baker",
-      comments:"“Weaving is so relaxing.  My ancestors prepared me when I was a child by putting a robe on me.  I am lucky to weave”",
-    }
-  ]
-  
 
 
 exports.seed = function(knex) {
@@ -77,10 +62,6 @@ exports.seed = function(knex) {
       return knex('usersInfo').del();
     }).then(function() {
       return knex('usersInfo').insert(usersInfo);
-    }).then(function(){
-      return knex('landingphotos').del()
-    }).then(function() {
-      return knex('landingphotos').insert(landingphotos);
     })
 
 };

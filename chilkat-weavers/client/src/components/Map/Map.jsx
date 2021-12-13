@@ -16,7 +16,6 @@ class Map extends Component {
         "https://native-land.ca/api/index.php?maps=territories&name=tsimshian,kwakwakawakw,tlingit,haida"
       )
       .then((response) => {
-        console.log(response);
         this.setState({
           map: response.data,
         });

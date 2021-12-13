@@ -18,7 +18,6 @@ class Gallery extends Component {
     axios
       .get(`http://localhost:8082/images`)
       .then((response) => {
-        console.log(response.data);
         this.setState({
           photos: response.data,
           activeWeaver: response.data[0],
@@ -30,7 +29,7 @@ class Gallery extends Component {
   render() {
     return (
       <article className="gallery">
-        <h2 className="gallery__title"></h2>
+        <h2 className="gallery__title">Weavers</h2>
         <ul className="gallery__list">
           {this.state.photos.map((photo) => {
             return (
@@ -47,43 +46,40 @@ class Gallery extends Component {
                   <p className="gallery__comments">{photo.comments}</p>
                   <p className="gallery__contact">{photo.links}</p>
                   <div className="gallery__social-wrapper">
-                   
-                   
-                  <a
-                    className="gallery__link"
-                    href={photo.Facebook}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <img
-                      className="gallery__icon"
-                      src={FB}
-                      alt="facebook logo"
-                    />
-                  </a>
-                 
-                 
-                  <a
-                    className="gallery__link"
-                    href={photo.instagram}
-                    target="_blank"
-                  >
-                    <img
-                      className="gallery__icon"
-                      src={Insta}
-                      alt="Instagram logo"
-                    />
-                  </a>
-                  </div>
+                    <a
+                      className="gallery__link"
+                      href={photo.Facebook}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <img
+                        className="gallery__icon"
+                        src={FB}
+                        alt="facebook logo"
+                      />
+                    </a>
 
+                    <a
+                      className="gallery__link"
+                      href={photo.instagram}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <img
+                        className="gallery__icon"
+                        src={Insta}
+                        alt="Instagram logo"
+                      />
+                    </a>
+                  </div>
                 </div>
-               
-              
               </li>
             );
           })}
         </ul>
-        <p className="gallery__notes">Thank you to everyone who contributed to this site.</p>
+        <p className="gallery__notes">
+          Thank you to everyone who contributed to this site.
+        </p>
       </article>
     );
   }

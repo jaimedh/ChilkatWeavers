@@ -14,15 +14,12 @@ class Profile extends Component {
     }
   
     getProfilebyId = (id) => {
-        console.log('id', id);
         axios
-        // .get(`http://localhost:8082/users/${id}`)
-        .get(`http://localhost:8082/auth/profile`, { withCredentials: true })
+        .get(`http://localhost:8082/users/${id}`)
+        
        
     
-    .then((response) => {
-        console.log(response.data[0]);
-                
+    .then((response) => {      
         this.setState({     
              profile: response.data[0], 
             
@@ -32,13 +29,12 @@ class Profile extends Component {
         .catch((error) => console.log("error getting user",error));
 };
 componentDidMount() {
-    const {id}=this.props.match.params;
-    this.getProfilebyId();
+    const {id} = this.props.match.params;
+    this.getProfilebyId(id);
    
 }
 
   render() { 
-      console.log(this.state.profile);
       if(!this.state.profile) {
           return<h1>Loading</h1>
       }
@@ -64,7 +60,7 @@ componentDidMount() {
             <div className="profile__social-container">
             
             <a className="profile__link"href={this.state.profile.fb} target="_blank" rel="noreferrer"><img className="profile__icon" src={FB} alt= "facebook logo"/></a>
-            <a className="profile__link" href={this.state.profile.instagram} target="_blank" ><img className="profile__icon" src={Insta} alt= "Instagram logo"/></a> 
+            <a className="profile__link" href={this.state.profile.instagram} target="_blank" rel="noreferrer"><img className="profile__icon" src={Insta} alt= "Instagram logo"/></a> 
                <Link className="profile__edit"to={`/${this.props.match.params.id}/edit`}>Edit</Link>
             </div>
 

@@ -4,18 +4,33 @@ const weavers = [
     links:"'photographed by Sydney Akagi'",
     info: "Lily Hope, photographed by @SydneyAkagiPhoto",
     comments: "",
-    website:"",
     instagram:"https://www.instagram.com/lilyhopeweaver/",
     facebook:"https://www.facebook.com/lilyhopeweaver",
   },
   {
     id: 112,
-    links:"",
+    links:"www.jaadkuujus.com www.meghannobrien.com",
     info: "Meghann O'Brien",
     comments: "",
-    website:"www.jaadkuujus.com www.meghannobrien.com",
     instagram:"https://www.instagram.com/meghaanobrien/",
+    facebook:"https://www.facebook.com/meghann.obrien.5",
   },
+  {
+    id:113,
+    links:"",
+    info:"Weaver Rachel Hunt",
+    comments:"“Everything is interwoven… weave with intention, and in good spirits.”",
+    instagram:"",
+    facebook:"",
+  },
+  {
+    id:114,
+    links:"",
+    info:"Weaver Charlene Baker",
+    comments:"“Weaving is so relaxing.  My ancestors prepared me when I was a child by putting a robe on me.  I am lucky to weave”",
+    instagram:"",
+    facebook:"",
+  }
 ];
 
 const images = [
@@ -49,8 +64,19 @@ const images = [
   {
     id: 15,
     weavers_id: 112,
-    file: "/gallery/robertleon.com-vanbc8798-1080px",
+    file: "/gallery/robertleon.com-vanbc8798-1080px.JPG",
   },
+  {
+    id: 16,
+    weavers_id: 113,
+    file: "/gallery/rachel.jpeg",
+  },
+  {
+    id: 17,
+    weavers_id: 114,
+    file: "/gallery/charlene.JPG",
+  },
+
 
 ];
 exports.seed = function (knex) {

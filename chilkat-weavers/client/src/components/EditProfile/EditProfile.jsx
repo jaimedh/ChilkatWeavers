@@ -4,8 +4,7 @@ import axios from "axios";
 
 class EditProfile extends Component {
   state = {
-    // imgSrc:"",
-    // file: null,
+    file: null,
     name: "",
     community: "",
     nation: "",
@@ -21,30 +20,32 @@ class EditProfile extends Component {
     instagram: "",
   };
   componentDidMount() {
-    this.getProfilebyId();
+    const {id} = this.props.match.params;
+    this.getProfilebyId(id);
+
   }
 
-  getProfilebyId = () => {
+  getProfilebyId = (id) => {
     axios
-      // .get(`http://localhost:8082/users/${this.props.match.params.id}`)
-      .get(`http://localhost:8082/auth/profile`, { withCredentials: true })
+      .get(`http://localhost:8082/users/${id}`)
+
       .then((response) => {
-        console.log(response.data);
+        console.log(response.data[0]);
         this.setState({
-          name: response.data.name,
-          community: response.data.community,
-          nation: response.data.nation,
+          name: response.data[0].name,
+          community: response.data[0].community,
+          nation: response.data[0].nation,
           
-          crest: response.data.crest,
-          location: response.data.location,
-          age: response.data.age,
-          teacher: response.data.teacher,
-          experience: response.data.experience,
-          blanket: response.data.blanket,
-          supply: response.data.supply,
-          comments: response.data.comments,
-          fb: response.data.fb,
-          instagram: response.data.instagram,
+          crest: response.data[0].crest,
+          location: response.data[0].location,
+          age: response.data[0].age,
+          teacher: response.data[0].teacher,
+          experience: response.data[0].experience,
+          blanket: response.data[0].blanket,
+          supply: response.data[0].supply,
+          comments: response.data[0].comments,
+          fb: response.data[0].fb,
+          instagram: response.data[0].instagram,
         });
       })
       .catch((error) => console.log(error));

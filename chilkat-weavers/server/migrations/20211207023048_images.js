@@ -11,7 +11,8 @@ exports.up = function (knex) {
         table.string("website");
         table.string("instagram");
         table.string("facebook");
-        table.timestamp("updated_at").defaultTo(knex.fn.now());        
+        table.timestamp("updated_at").defaultTo(knex.fn.now());
+        table.string("google_id");        
       })
       .createTable("images", (table) => {
         table.increments("id"); //primary photos id key

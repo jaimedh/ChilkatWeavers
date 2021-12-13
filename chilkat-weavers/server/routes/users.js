@@ -4,22 +4,7 @@ const knex = require("knex")(require("../knexfile").development);
 const multer = require("multer");
 const fs = require("fs-extra");
 const { request } = require("express");
-// const photo = multer({ dest: './../public/photos' })
 
-// let photo = multer({
-//   storage: multer.diskStorage({
-//     destination: (request, file, callback) => {
-//       let path = `./../public/photos`;
-//       fs.mkdirsSync(path);
-//       callback(null, path);
-//     },
-//     filename: (request, file, callback) => {
-//       //originalname is the uploaded file's name with extn
-//       callback(null, file.originalname);
-//     },
-//   }),
-// });
-//get all users photo.single('profile_img'),
 router.get("/", (request, respond) => {
   knex("users")
     .join("usersinfo", "usersinfo.users_id", "users.id") // join users table
@@ -34,49 +19,10 @@ router.get("/", (request, respond) => {
     });
 });
 
-//get user by id
-
-// router.get('/:id', (request, respond) => {
-//     knex('users')
-//     .where({ id: request.params.id })
-//     .then((data) => {
-//         if (!data.length) {
-//             respond.status(404).json({
-//                 message: `User not found with the id ${request.params.id}`,
-//             });
-//         } else {
-//             respond.status(200).json(data[0]);
-//         }
-//     })
-//     .catch(() => {
-//         respond.status(400).json({
-//             message: `Error getting user ${request.params.id}`,
-//         });
-//     });
-// });
-
-// router.get('/:id/posts', (request, respond) => {
-//     knex('usersinfo')
-//       .where({ user_id: request.params.id })
-//       .then((data) => {
-//         if (!data.length) {
-//           respond.status(404).json({
-//             message: `User not found with the id ${request.params.id}`,
-//           });
-//         } else {
-//           respond.status(200).json(data);
-//         }
-//       })
-//       .catch(() => {
-//         respond.status(400).json({
-//           message: `Error getting posts for user ${request.params.id}`,
-//         });
-//       });
-//   });
 
 //get posts by user with id, using inner join
 router.get("/:id", (req, res) => {
-  console.log(req.params);
+  console.log('line 79',req.params);
   knex("users")
     .join("usersinfo", "usersinfo.users_id", "users.id") // join users table
     .where({users_id: req.params.id })
@@ -96,7 +42,6 @@ router.get("/:id", (req, res) => {
     });
 });
 
-//new user photo.single("profile_img"),
 
 router.post("/",  (request, respond) => {
   console.log("text", request.body);
@@ -147,24 +92,6 @@ router.post("/",  (request, respond) => {
     });
 });
 
-//  router.post('/', (request, respond) => {
-//       if (!request.body.name) {
-//         respond.status(400).json({ message: `Please provide a name for the user` });
-//         return;
-//       }
-//       knex('usersinfo')
-//         .insert(request.body)
-//         .then((data) => {
-//             respond.status(201).json({
-//                 message: `UsersInfo ${request.body.name} created successfully with the id ${data}`,
-//             });
-//         })
-//         .catch(() => {
-//             respond.status(400).json({
-//               message: `Error creating user ${request.body.name}`,
-//       });
-//   });
-//  });
 
 // update user
 router.put("/:id", (request, respond) => {
@@ -191,7 +118,7 @@ router.put("/:id", (request, respond) => {
     .where({ id: request.params.id })
     .update(usersData)
     .then((data) => {
-      console.log(data);
+      console.log('line 194',data);
       userId = data[0];
       usersMoreData.users_id = data[0];
       return knex("usersinfo")

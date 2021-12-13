@@ -1,6 +1,6 @@
 import "./SignUp.scss";
 import { Component } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 class SignUp extends Component {

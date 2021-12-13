@@ -25,9 +25,6 @@ function Header() {
           <NavLink to="/signup" className="header__link">
             <button className="header__btn">Weavers Sign-Up</button>
           </NavLink>
-          <a href="http://localhost:8082/auth" className="header__link">
-            <p className="header__tab">Login</p>
-          </a>
         </div>
       </nav>
     </header>

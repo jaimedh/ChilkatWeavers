@@ -26,12 +26,10 @@ class Weavers extends Component {
   };
 
   render() {
-    console.log(this.state.weavers);
 
     return (
       <article className="weavers">
         <ul className="weavers__list">
-          <h2 className="weavers__title"></h2>
           {this.state.weavers.map((weaver) => {
             return (
               <li key={weaver.id} className="weavers__item">
@@ -88,6 +86,7 @@ class Weavers extends Component {
                       className="weavers__link"
                       href={weaver.fb}
                       target="_blank"
+                      rel="noreferrer"
                     >
                       <img
                         className="weavers__icon"
@@ -99,6 +98,7 @@ class Weavers extends Component {
                       className="weavers__link"
                       href={weaver.instagram}
                       target="_blank"
+                      rel="noreferrer"
                     >
                       <img
                         className="profile__icon"

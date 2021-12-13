@@ -36,7 +36,6 @@ router.put
        knex('users').where({ id: req.params.id });
        return data[0];
        
-
       })
       .then((data) => {
         res.status(200).json(data);
@@ -57,6 +56,7 @@ router.put
     knex('weavers')
     .join('images', 'images.weavers_id', 'weavers.id')
       .then((data) => {
+        console.log(data);
         res.status(200).json(data);
       })
       .catch(() => {
